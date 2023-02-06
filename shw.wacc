@@ -1,0 +1,2321 @@
+begin
+bool isAlpha(char c) is
+  return (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || c == '_'
+end
+bool isDigit(char c) is
+ return c >= '0' && c <= '9'
+end
+int wacc_fail(string file, int line, string r1, string r2) is
+  print file;
+  print ":";
+  print line;
+  print " ";
+  print r1;
+  print r2;
+  println "";
+return 0 end
+pair(pair, pair) lexer_ctor(
+    char[][] source,
+    char[] sentinal,
+    int start,
+    int current,
+    int logical_line
+) is
+    int ll__ctor = logical_line;
+    int rl__ctor = current;
+    pair(int, int) l__ctor = newpair(ll__ctor, rl__ctor);
+    char[] lr__ctor = sentinal;
+    char[][] lrr__ctor = source;
+    int rrr__ctor = start;
+    pair(char[][], int) rr__ctor = newpair(lrr__ctor, rrr__ctor);
+    pair(char[], pair) r__ctor = newpair(lr__ctor, rr__ctor);
+    pair(pair, pair) __ctor = newpair(l__ctor, r__ctor);
+    return __ctor
+end
+int lexer_dtor(pair(pair, pair) self) is
+    pair(int, int) lself = fst self;
+    pair(char[], pair) rself = snd self;
+    int llself = fst lself;
+    int rlself = snd lself;
+    free lself;
+    char[] lrself = fst rself;
+    pair(char[][], int) rrself = snd rself;
+    char[][] lrrself = fst rrself;
+    int rrrself = snd rrself;
+    free rrself;
+    free rself;
+    free self;
+return 0 end
+string token_type_str(int __e) is
+    if __e < 28 then
+        if __e < 14 then
+            if __e < 7 then
+                if __e < 3 then
+                    if __e < 1 then
+                        if __e == 0 then return "identifier" else skip fi
+                    else
+                        if __e < 2 then
+                            if __e == 1 then return "number" else skip fi
+                        else
+                            if __e == 2 then return "eof" else skip fi
+                        fi
+                    fi
+                else
+                    if __e < 5 then
+                        if __e < 4 then
+                            if __e == 3 then return "begin" else skip fi
+                        else
+                            if __e == 4 then return "bool" else skip fi
+                        fi
+                    else
+                        if __e < 6 then
+                            if __e == 5 then return "call" else skip fi
+                        else
+                            if __e == 6 then return "char" else skip fi
+                        fi
+                    fi
+                fi
+            else
+                if __e < 10 then
+                    if __e < 8 then
+                        if __e == 7 then return "chr" else skip fi
+                    else
+                        if __e < 9 then
+                            if __e == 8 then return "do" else skip fi
+                        else
+                            if __e == 9 then return "done" else skip fi
+                        fi
+                    fi
+                else
+                    if __e < 12 then
+                        if __e < 11 then
+                            if __e == 10 then return "else" else skip fi
+                        else
+                            if __e == 11 then return "end" else skip fi
+                        fi
+                    else
+                        if __e < 13 then
+                            if __e == 12 then return "exit" else skip fi
+                        else
+                            if __e == 13 then return "false" else skip fi
+                        fi
+                    fi
+                fi
+            fi
+        else
+            if __e < 21 then
+                if __e < 17 then
+                    if __e < 15 then
+                        if __e == 14 then return "fi" else skip fi
+                    else
+                        if __e < 16 then
+                            if __e == 15 then return "free" else skip fi
+                        else
+                            if __e == 16 then return "fst" else skip fi
+                        fi
+                    fi
+                else
+                    if __e < 19 then
+                        if __e < 18 then
+                            if __e == 17 then return "if" else skip fi
+                        else
+                            if __e == 18 then return "int" else skip fi
+                        fi
+                    else
+                        if __e < 20 then
+                            if __e == 19 then return "is" else skip fi
+                        else
+                            if __e == 20 then return "len" else skip fi
+                        fi
+                    fi
+                fi
+            else
+                if __e < 24 then
+                    if __e < 22 then
+                        if __e == 21 then return "newpair" else skip fi
+                    else
+                        if __e < 23 then
+                            if __e == 22 then return "null" else skip fi
+                        else
+                            if __e == 23 then return "ord" else skip fi
+                        fi
+                    fi
+                else
+                    if __e < 26 then
+                        if __e < 25 then
+                            if __e == 24 then return "pair" else skip fi
+                        else
+                            if __e == 25 then return "print" else skip fi
+                        fi
+                    else
+                        if __e < 27 then
+                            if __e == 26 then return "println" else skip fi
+                        else
+                            if __e == 27 then return "read" else skip fi
+                        fi
+                    fi
+                fi
+            fi
+        fi
+    else
+        if __e < 42 then
+            if __e < 35 then
+                if __e < 31 then
+                    if __e < 29 then
+                        if __e == 28 then return "return" else skip fi
+                    else
+                        if __e < 30 then
+                            if __e == 29 then return "skip" else skip fi
+                        else
+                            if __e == 30 then return "snd" else skip fi
+                        fi
+                    fi
+                else
+                    if __e < 33 then
+                        if __e < 32 then
+                            if __e == 31 then return "string" else skip fi
+                        else
+                            if __e == 32 then return "then" else skip fi
+                        fi
+                    else
+                        if __e < 34 then
+                            if __e == 33 then return "true" else skip fi
+                        else
+                            if __e == 34 then return "while" else skip fi
+                        fi
+                    fi
+                fi
+            else
+                if __e < 38 then
+                    if __e < 36 then
+                        if __e == 35 then return "lparen" else skip fi
+                    else
+                        if __e < 37 then
+                            if __e == 36 then return "rparen" else skip fi
+                        else
+                            if __e == 37 then return "assign" else skip fi
+                        fi
+                    fi
+                else
+                    if __e < 40 then
+                        if __e < 39 then
+                            if __e == 38 then return "semi" else skip fi
+                        else
+                            if __e == 39 then return "comma" else skip fi
+                        fi
+                    else
+                        if __e < 41 then
+                            if __e == 40 then return "lsquare" else skip fi
+                        else
+                            if __e == 41 then return "rsquare" else skip fi
+                        fi
+                    fi
+                fi
+            fi
+        else
+            if __e < 49 then
+                if __e < 45 then
+                    if __e < 43 then
+                        if __e == 42 then return "not" else skip fi
+                    else
+                        if __e < 44 then
+                            if __e == 43 then return "minus" else skip fi
+                        else
+                            if __e == 44 then return "times" else skip fi
+                        fi
+                    fi
+                else
+                    if __e < 47 then
+                        if __e < 46 then
+                            if __e == 45 then return "div" else skip fi
+                        else
+                            if __e == 46 then return "mod" else skip fi
+                        fi
+                    else
+                        if __e < 48 then
+                            if __e == 47 then return "plus" else skip fi
+                        else
+                            if __e == 48 then return "gt" else skip fi
+                        fi
+                    fi
+                fi
+            else
+                if __e < 52 then
+                    if __e < 50 then
+                        if __e == 49 then return "ge" else skip fi
+                    else
+                        if __e < 51 then
+                            if __e == 50 then return "lt" else skip fi
+                        else
+                            if __e == 51 then return "le" else skip fi
+                        fi
+                    fi
+                else
+                    if __e < 54 then
+                        if __e < 53 then
+                            if __e == 52 then return "eq" else skip fi
+                        else
+                            if __e == 53 then return "ne" else skip fi
+                        fi
+                    else
+                        if __e < 55 then
+                            if __e == 54 then return "and" else skip fi
+                        else
+                            if __e == 55 then return "or" else skip fi
+                        fi
+                    fi
+                fi
+            fi
+        fi
+    fi ; exit 1
+end
+pair(pair, pair) token_ctor(
+    int type,
+    int start,
+    int length,
+    char[] source
+) is
+    int ll__ctor = type;
+    int rl__ctor = length;
+    pair(int, int) l__ctor = newpair(ll__ctor, rl__ctor);
+    int lr__ctor = start;
+    char[] rr__ctor = source;
+    pair(int, char[]) r__ctor = newpair(lr__ctor, rr__ctor);
+    pair(pair, pair) __ctor = newpair(l__ctor, r__ctor);
+    return __ctor
+end
+int token_dtor(pair(pair, pair) self) is
+    pair(int, int) lself = fst self;
+    pair(int, char[]) rself = snd self;
+    int llself = fst lself;
+    int rlself = snd lself;
+    free lself;
+    int lrself = fst rself;
+    char[] rrself = snd rself;
+    free rself;
+    free self;
+return 0 end
+int identifier_kind(char[] str, int start, int lenn) is
+  char[] exp=[];
+  free exp; bool eq=false;
+    if lenn <= 3 then
+        if lenn <= 2 then
+            if lenn == 2 then
+                if str[start + 0] <= 'f' then
+                    if str[start + 0] <= 'd' then
+                        exp = ['d', 'o'];
+                        eq = call streq(str, start, lenn, exp);
+                        free exp;
+                        if eq then return 8 else skip fi
+                    else
+                        exp = ['f', 'i'];
+                        eq = call streq(str, start, lenn, exp);
+                        free exp;
+                        if eq then return 14 else skip fi
+                    fi
+                else
+                    if str[start + 1] <= 'f' then
+                        exp = ['i', 'f'];
+                        eq = call streq(str, start, lenn, exp);
+                        free exp;
+                        if eq then return 17 else skip fi
+                    else
+                        exp = ['i', 's'];
+                        eq = call streq(str, start, lenn, exp);
+                        free exp;
+                        if eq then return 19 else skip fi
+                    fi
+                fi
+            else skip fi
+        else
+            if lenn == 3 then
+                if str[start + 0] <= 'f' then
+                    if str[start + 0] <= 'c' then
+                        exp = ['c', 'h', 'r'];
+                        eq = call streq(str, start, lenn, exp);
+                        free exp;
+                        if eq then return 7 else skip fi
+                    else
+                        if str[start + 0] <= 'e' then
+                            exp = ['e', 'n', 'd'];
+                            eq = call streq(str, start, lenn, exp);
+                            free exp;
+                            if eq then return 11 else skip fi
+                        else
+                            exp = ['f', 's', 't'];
+                            eq = call streq(str, start, lenn, exp);
+                            free exp;
+                            if eq then return 16 else skip fi
+                        fi
+                    fi
+                else
+                    if str[start + 0] <= 'l' then
+                        if str[start + 0] <= 'i' then
+                            exp = ['i', 'n', 't'];
+                            eq = call streq(str, start, lenn, exp);
+                            free exp;
+                            if eq then return 18 else skip fi
+                        else
+                            exp = ['l', 'e', 'n'];
+                            eq = call streq(str, start, lenn, exp);
+                            free exp;
+                            if eq then return 20 else skip fi
+                        fi
+                    else
+                        if str[start + 0] <= 'o' then
+                            exp = ['o', 'r', 'd'];
+                            eq = call streq(str, start, lenn, exp);
+                            free exp;
+                            if eq then return 23 else skip fi
+                        else
+                            exp = ['s', 'n', 'd'];
+                            eq = call streq(str, start, lenn, exp);
+                            free exp;
+                            if eq then return 30 else skip fi
+                        fi
+                    fi
+                fi
+            else skip fi
+        fi
+    else
+        if lenn <= 4 then
+            if lenn == 4 then
+                if str[start + 0] <= 'e' then
+                    if str[start + 0] <= 'c' then
+                        if str[start + 0] <= 'b' then
+                            exp = ['b', 'o', 'o', 'l'];
+                            eq = call streq(str, start, lenn, exp);
+                            free exp;
+                            if eq then return 4 else skip fi
+                        else
+                            if str[start + 1] <= 'a' then
+                                exp = ['c', 'a', 'l', 'l'];
+                                eq = call streq(str, start, lenn, exp);
+                                free exp;
+                                if eq then return 5 else skip fi
+                            else
+                                exp = ['c', 'h', 'a', 'r'];
+                                eq = call streq(str, start, lenn, exp);
+                                free exp;
+                                if eq then return 6 else skip fi
+                            fi
+                        fi
+                    else
+                        if str[start + 0] <= 'd' then
+                            exp = ['d', 'o', 'n', 'e'];
+                            eq = call streq(str, start, lenn, exp);
+                            free exp;
+                            if eq then return 9 else skip fi
+                        else
+                            if str[start + 1] <= 'l' then
+                                exp = ['e', 'l', 's', 'e'];
+                                eq = call streq(str, start, lenn, exp);
+                                free exp;
+                                if eq then return 10 else skip fi
+                            else
+                                exp = ['e', 'x', 'i', 't'];
+                                eq = call streq(str, start, lenn, exp);
+                                free exp;
+                                if eq then return 12 else skip fi
+                            fi
+                        fi
+                    fi
+                else
+                    if str[start + 0] <= 'p' then
+                        if str[start + 0] <= 'f' then
+                            exp = ['f', 'r', 'e', 'e'];
+                            eq = call streq(str, start, lenn, exp);
+                            free exp;
+                            if eq then return 15 else skip fi
+                        else
+                            if str[start + 0] <= 'n' then
+                                exp = ['n', 'u', 'l', 'l'];
+                                eq = call streq(str, start, lenn, exp);
+                                free exp;
+                                if eq then return 22 else skip fi
+                            else
+                                exp = ['p', 'a', 'i', 'r'];
+                                eq = call streq(str, start, lenn, exp);
+                                free exp;
+                                if eq then return 24 else skip fi
+                            fi
+                        fi
+                    else
+                        if str[start + 0] <= 's' then
+                            if str[start + 0] <= 'r' then
+                                exp = ['r', 'e', 'a', 'd'];
+                                eq = call streq(str, start, lenn, exp);
+                                free exp;
+                                if eq then return 27 else skip fi
+                            else
+                                exp = ['s', 'k', 'i', 'p'];
+                                eq = call streq(str, start, lenn, exp);
+                                free exp;
+                                if eq then return 29 else skip fi
+                            fi
+                        else
+                            if str[start + 1] <= 'h' then
+                                exp = ['t', 'h', 'e', 'n'];
+                                eq = call streq(str, start, lenn, exp);
+                                free exp;
+                                if eq then return 32 else skip fi
+                            else
+                                exp = ['t', 'r', 'u', 'e'];
+                                eq = call streq(str, start, lenn, exp);
+                                free exp;
+                                if eq then return 33 else skip fi
+                            fi
+                        fi
+                    fi
+                fi
+            else skip fi
+        else
+            if lenn <= 5 then
+                if lenn == 5 then
+                    if str[start + 0] <= 'f' then
+                        if str[start + 0] <= 'b' then
+                            exp = ['b', 'e', 'g', 'i', 'n'];
+                            eq = call streq(str, start, lenn, exp);
+                            free exp;
+                            if eq then return 3 else skip fi
+                        else
+                            exp = ['f', 'a', 'l', 's', 'e'];
+                            eq = call streq(str, start, lenn, exp);
+                            free exp;
+                            if eq then return 13 else skip fi
+                        fi
+                    else
+                        if str[start + 0] <= 'p' then
+                            exp = ['p', 'r', 'i', 'n', 't'];
+                            eq = call streq(str, start, lenn, exp);
+                            free exp;
+                            if eq then return 25 else skip fi
+                        else
+                            exp = ['w', 'h', 'i', 'l', 'e'];
+                            eq = call streq(str, start, lenn, exp);
+                            free exp;
+                            if eq then return 34 else skip fi
+                        fi
+                    fi
+                else skip fi
+            else
+                if lenn <= 6 then
+                    if lenn == 6 then
+                        if str[start + 0] <= 'r' then
+                            exp = ['r', 'e', 't', 'u', 'r', 'n'];
+                            eq = call streq(str, start, lenn, exp);
+                            free exp;
+                            if eq then return 28 else skip fi
+                        else
+                            exp = ['s', 't', 'r', 'i', 'n', 'g'];
+                            eq = call streq(str, start, lenn, exp);
+                            free exp;
+                            if eq then return 31 else skip fi
+                        fi
+                    else skip fi
+                else
+                    if lenn == 7 then
+                        if str[start + 0] <= 'n' then
+                            exp = ['n', 'e', 'w', 'p', 'a', 'i', 'r'];
+                            eq = call streq(str, start, lenn, exp);
+                            free exp;
+                            if eq then return 21 else skip fi
+                        else
+                            exp = ['p', 'r', 'i', 'n', 't', 'l', 'n'];
+                            eq = call streq(str, start, lenn, exp);
+                            free exp;
+                            if eq then return 26 else skip fi
+                        fi
+                    else skip fi
+                fi
+            fi
+        fi
+    fi ;
+    return 0
+end
+bool streq(char[] dyn, int start, int lenn, char[] static) is
+    int i = 0;
+    while i < lenn do
+        if dyn[start + i] != static[i] then
+            return false
+        else
+            i = i + 1
+        fi
+    done ;
+    return true
+end
+char l_advance(pair(pair, pair) self ) is pair(pair, pair) __self = self; pair(int, int) __fstself = fst __self; int logical_line = fst __fstself; int current = snd __fstself; pair(char[], pair) __sndself = snd __self; char[] sentinal = fst __sndself; pair(char[][], int) __sndsndself = snd __sndself; char[][] source = fst __sndsndself; int start = snd __sndsndself;
+    bool b = call l_is_at_end(self);
+    if b then
+        print "Unexpected EOF";
+        int __exit = call wacc_fail("../shw/src/lexer.wacc.in", 19, "Error", ""); exit 1
+    else skip fi ;
+    char ret = call l_peek(self);
+    snd __fstself = current + 1; current = current + 1;
+    if current > len source[logical_line] then
+        fst __fstself = logical_line+1; logical_line = logical_line+1;
+        snd __fstself = 0; current = 0
+    else skip fi ;
+    return ret
+end
+char l_peek(pair(pair, pair) self ) is pair(pair, pair) __self = self; pair(int, int) __fstself = fst __self; int logical_line = fst __fstself; int current = snd __fstself; pair(char[], pair) __sndself = snd __self; char[] sentinal = fst __sndself; pair(char[][], int) __sndsndself = snd __sndself; char[][] source = fst __sndsndself; int start = snd __sndsndself;
+    bool b = call l_is_at_end(self);
+    if b then
+        println "Unexpected EOF";
+        int __exit = call wacc_fail("../shw/src/lexer.wacc.in", 36, "Error", ""); exit 1
+    else skip fi ;
+    if len source[logical_line]==0 || len source[logical_line]==current then
+        return '\n'
+    else
+        return source[logical_line][current]
+    fi
+end
+int l_skip_comment(pair(pair, pair) self ) is pair(pair, pair) __self = self; pair(int, int) __fstself = fst __self; int logical_line = fst __fstself; int current = snd __fstself; pair(char[], pair) __sndself = snd __self; char[] sentinal = fst __sndself; pair(char[][], int) __sndsndself = snd __sndself; char[][] source = fst __sndsndself; int start = snd __sndsndself;
+    while true do
+        bool is_at_end = call l_is_at_end(self);
+        if is_at_end then
+            return 0
+        else skip fi ;
+        char c = call l_advance(self);
+        if c == '\n' then
+            return 0
+        else skip fi
+    done ;
+return 0 end
+bool l_is_at_end(pair(pair, pair) self ) is pair(pair, pair) __self = self; pair(int, int) __fstself = fst __self; int logical_line = fst __fstself; int current = snd __fstself; pair(char[], pair) __sndself = snd __self; char[] sentinal = fst __sndself; pair(char[][], int) __sndsndself = snd __sndself; char[][] source = fst __sndsndself; int start = snd __sndsndself;
+    return source[logical_line] == sentinal
+end
+int l_skip_whitespace(pair(pair, pair) self ) is pair(pair, pair) __self = self; pair(int, int) __fstself = fst __self; int logical_line = fst __fstself; int current = snd __fstself; pair(char[], pair) __sndself = snd __self; char[] sentinal = fst __sndself; pair(char[][], int) __sndsndself = snd __sndself; char[][] source = fst __sndsndself; int start = snd __sndsndself;
+    while true do
+        bool isAtEnd = call l_is_at_end(self);
+        if isAtEnd then
+            return 0
+        else skip fi ;
+        char c = call l_peek(self);
+        if c == ' ' || c == '\t' || c == '\n' || c == '\r' then
+            char _nop = call l_advance(self)
+        else if c == '#' then
+            int __nop = call l_skip_comment(self)
+        else
+            return 0
+        fi fi
+    done;
+return 0 end
+pair(pair, pair) l_make_token(pair(pair, pair) self , int ttype) is pair(pair, pair) __self = self; pair(int, int) __fstself = fst __self; int logical_line = fst __fstself; int current = snd __fstself; pair(char[], pair) __sndself = snd __self; char[] sentinal = fst __sndself; pair(char[][], int) __sndsndself = snd __sndself; char[][] source = fst __sndsndself; int start = snd __sndsndself;
+    pair(pair, pair) __ret = call token_ctor(ttype, start, current - start, source[logical_line]); return __ret
+end
+pair(pair, pair) lexer_new(char[][] source, char[] sentinal) is
+    pair(pair, pair) __ret = call lexer_ctor(source, sentinal, 0, 0, 0); return __ret
+end
+bool l_match(pair(pair, pair) self , char expected) is pair(pair, pair) __self = self; pair(int, int) __fstself = fst __self; int logical_line = fst __fstself; int current = snd __fstself; pair(char[], pair) __sndself = snd __self; char[] sentinal = fst __sndself; pair(char[][], int) __sndsndself = snd __sndself; char[][] source = fst __sndsndself; int start = snd __sndsndself;
+    bool isAtEnd = call l_is_at_end(self);
+    if isAtEnd then
+        return false
+    else skip fi ;
+    char c = call l_peek(self);
+    if c != expected then
+        return false
+    else skip fi ;
+    snd __fstself = current + 1; current = current + 1;
+    return true
+end
+pair(pair, pair) l_next_token(pair(pair, pair) self ) is pair(pair, pair) __self = self; pair(int, int) __fstself = fst __self; int logical_line = fst __fstself; int current = snd __fstself; pair(char[], pair) __sndself = snd __self; char[] sentinal = fst __sndself; pair(char[][], int) __sndsndself = snd __sndself; char[][] source = fst __sndsndself; int start = snd __sndsndself;
+    int __nop = call l_skip_whitespace(self);
+    logical_line = fst __fstself; current = snd __fstself; sentinal = fst __sndself; source = fst __sndsndself; start = snd __sndsndself;
+    snd __sndsndself = current; start = current;
+    bool isAtEnd = call l_is_at_end(self);
+    if isAtEnd then
+        pair(pair, pair) __ret = call l_make_token(self, 2); return __ret
+    else skip fi ;
+    char c = call l_advance(self);
+    bool b = call isAlpha(c);
+    if b then
+        pair(pair, pair) __ret = call l_identifier(self); return __ret
+    else skip fi ;
+    b = call isDigit(c);
+    if b then
+        pair(pair, pair) __ret = call l_number(self); return __ret
+    else skip fi ;
+    if c <= '+' then
+        if c <= '&' then
+            if c <= '\"' then
+                if c <= '!' then
+                    if c == '!' then
+                        bool isEq = call l_match(self, '=');
+                        if isEq then
+                            pair(pair, pair) __ret = call l_make_token(self, 53); return __ret
+                        else
+                            pair(pair, pair) __ret = call l_make_token(self, 42); return __ret
+                        fi
+                    else skip fi
+                else
+                    if c == '\"' then
+                        pair(pair, pair) __ret = call l_string_lit(self); return __ret
+                    else skip fi
+                fi
+            else
+                if c <= '%' then
+                    if c == '%' then pair(pair, pair) __ret = call l_make_token(self, 46); return __ret else skip fi
+                else
+                    if c == '&' then
+                        c = call l_advance(self);
+                        if c == '&' then pair(pair, pair) __ret = call l_make_token(self, 54); return __ret else skip fi
+                    else skip fi
+                fi
+            fi
+        else
+            if c <= '(' then
+                if c <= '\'' then
+                    if c == '\'' then
+                        pair(pair, pair) __ret = call l_char_lit(self); return __ret
+                    else skip fi
+                else
+                    if c == '(' then pair(pair, pair) __ret = call l_make_token(self, 35); return __ret else skip fi
+                fi
+            else
+                if c <= ')' then
+                    if c == ')' then pair(pair, pair) __ret = call l_make_token(self, 36); return __ret else skip fi
+                else
+                    if c <= '*' then
+                        if c == '*' then pair(pair, pair) __ret = call l_make_token(self, 44); return __ret else skip fi
+                    else
+                        if c == '+' then pair(pair, pair) __ret = call l_make_token(self, 47); return __ret else skip fi
+                    fi
+                fi
+            fi
+        fi
+    else
+        if c <= '<' then
+            if c <= '-' then
+                if c <= ',' then
+                    if c == ',' then pair(pair, pair) __ret = call l_make_token(self, 39); return __ret else skip fi
+                else
+                    if c == '-' then pair(pair, pair) __ret = call l_make_token(self, 43); return __ret else skip fi
+                fi
+            else
+                if c <= '/' then
+                    if c == '/' then pair(pair, pair) __ret = call l_make_token(self, 45); return __ret else skip fi
+                else
+                    if c <= ';' then
+                        if c == ';' then pair(pair, pair) __ret = call l_make_token(self, 38); return __ret else skip fi
+                    else
+                        if c == '<' then
+                            bool isEq = call l_match(self, '=');
+                            if isEq then
+                                pair(pair, pair) __ret = call l_make_token(self, 51); return __ret
+                            else
+                                pair(pair, pair) __ret = call l_make_token(self, 50); return __ret
+                            fi
+                        else skip fi
+                    fi
+                fi
+            fi
+        else
+            if c <= '>' then
+                if c <= '=' then
+                    if c == '=' then
+                        bool isEq = call l_match(self, '=');
+                        if isEq then
+                            pair(pair, pair) __ret = call l_make_token(self, 52); return __ret
+                        else
+                            pair(pair, pair) __ret = call l_make_token(self, 37); return __ret
+                        fi
+                    else skip fi
+                else
+                    if c == '>' then
+                        bool isEq = call l_match(self, '=');
+                        if isEq then
+                            pair(pair, pair) __ret = call l_make_token(self, 49); return __ret
+                        else
+                            pair(pair, pair) __ret = call l_make_token(self, 48); return __ret
+                        fi
+                    else skip fi
+                fi
+            else
+                if c <= '[' then
+                    if c == '[' then pair(pair, pair) __ret = call l_make_token(self, 40); return __ret else skip fi
+                else
+                    if c <= ']' then
+                        if c == ']' then pair(pair, pair) __ret = call l_make_token(self, 41); return __ret else skip fi
+                    else
+                        if c <= '|' then
+                            c = call l_advance(self);
+                            if c == '|' then pair(pair, pair) __ret = call l_make_token(self, 55); return __ret else skip fi
+                        else skip fi
+                    fi
+                fi
+            fi
+        fi
+    fi ;
+    println "Lexer error" ;
+    print "char = \'";
+    print c;
+    print "\' (ascii ";
+    print ord c;
+    println ")" ;
+    int __exit = call wacc_fail("../shw/src/lexer.wacc.in", 260, "Error", ""); exit 1
+end
+pair(pair, pair) l_identifier(pair(pair, pair) self ) is pair(pair, pair) __self = self; pair(int, int) __fstself = fst __self; int logical_line = fst __fstself; int current = snd __fstself; pair(char[], pair) __sndself = snd __self; char[] sentinal = fst __sndself; pair(char[][], int) __sndsndself = snd __sndself; char[][] source = fst __sndsndself; int start = snd __sndsndself;
+    bool run = true;
+    while run do
+        char c = call l_peek(self);
+        bool isAlpha = call isAlpha(c);
+        bool isDigit = call isDigit(c);
+        if isAlpha || isDigit then
+            char _nop = call l_advance(self)
+        else
+            run = false
+        fi
+    done;
+    logical_line = fst __fstself; current = snd __fstself; sentinal = fst __sndself; source = fst __sndsndself; start = snd __sndsndself;
+    int ttype = call identifier_kind(source[logical_line], start, current - start);
+    pair(pair, pair) __ret = call l_make_token(self, ttype); return __ret
+end
+pair(pair, pair) l_number(pair(pair, pair) self ) is pair(pair, pair) __self = self; pair(int, int) __fstself = fst __self; int logical_line = fst __fstself; int current = snd __fstself; pair(char[], pair) __sndself = snd __self; char[] sentinal = fst __sndself; pair(char[][], int) __sndsndself = snd __sndself; char[][] source = fst __sndsndself; int start = snd __sndsndself;
+    bool run = true;
+    while run do
+        char c = call l_peek(self);
+        bool isDigit = call isDigit(c);
+        if isDigit then
+            char _nop = call l_advance(self)
+        else
+            run = false
+        fi
+    done ;
+    pair(pair, pair) __ret = call l_make_token(self, 1); return __ret
+end
+pair(pair, pair) l_string_lit(pair(pair, pair) self ) is pair(pair, pair) __self = self; pair(int, int) __fstself = fst __self; int logical_line = fst __fstself; int current = snd __fstself; pair(char[], pair) __sndself = snd __self; char[] sentinal = fst __sndself; pair(char[][], int) __sndsndself = snd __sndself; char[][] source = fst __sndsndself; int start = snd __sndsndself;
+    bool iae = call l_is_at_end(self);
+    while !iae do
+        char c = call l_advance(self);
+        if c == '\"' then
+            pair(pair, pair) __ret = call l_make_token(self, 31); return __ret
+        else skip fi ;
+        if c == '\\' then
+            int __nop = call l_escape_sequence(self)
+        else skip fi ;
+        if c == '\'' then
+            int __exit = call wacc_fail("../shw/src/lexer.wacc.in", 306, "Error", ""); exit 1
+        else skip fi ;
+        iae = call l_is_at_end(self)
+    done ;
+    int __exit = call wacc_fail("../shw/src/lexer.wacc.in", 311, "Error", ""); exit 1
+end
+pair(pair, pair) l_char_lit(pair(pair, pair) self ) is pair(pair, pair) __self = self; pair(int, int) __fstself = fst __self; int logical_line = fst __fstself; int current = snd __fstself; pair(char[], pair) __sndself = snd __self; char[] sentinal = fst __sndself; pair(char[][], int) __sndsndself = snd __sndself; char[][] source = fst __sndsndself; int start = snd __sndsndself;
+    bool b = call l_is_at_end(self);
+    if b then
+        int __exit = call wacc_fail("../shw/src/lexer.wacc.in", 317, "Error", ""); exit 1
+    else skip fi ;
+    char c = call l_advance(self);
+    if c == '\'' || c == '\"' then
+        int __exit = call wacc_fail("../shw/src/lexer.wacc.in", 321, "Error", ""); exit 1
+    else skip fi ;
+    if c == '\\' then
+        int __nop = call l_escape_sequence(self)
+    else skip fi ;
+    c = call l_advance(self);
+    if c != '\'' then
+        int __exit = call wacc_fail("../shw/src/lexer.wacc.in", 328, "Error", ""); exit 1
+    else skip fi ;
+    pair(pair, pair) __ret = call l_make_token(self, 6); return __ret
+end
+int l_escape_sequence(pair(pair, pair) self ) is pair(pair, pair) __self = self; pair(int, int) __fstself = fst __self; int logical_line = fst __fstself; int current = snd __fstself; pair(char[], pair) __sndself = snd __self; char[] sentinal = fst __sndself; pair(char[][], int) __sndsndself = snd __sndself; char[][] source = fst __sndsndself; int start = snd __sndsndself;
+    char c = call l_advance(self);
+    bool b = call l_is_at_end(self);
+    if b then
+        int __exit = call wacc_fail("../shw/src/lexer.wacc.in", 337, "Error", ""); exit 1
+    else skip fi ;
+    if c == '0'
+        || c == 'b'
+        || c == 't'
+        || c == 'n'
+        || c == 'f'
+        || c == 'r'
+        || c == '\"'
+        || c == '\''
+        || c == '\\'
+    then skip else
+        print "Invalid escape sequence: ";
+        println c;
+        int __exit = call wacc_fail("../shw/src/lexer.wacc.in", 351, "Error", ""); exit 1
+    fi;
+return 0 end
+int print_token(pair(pair, pair) self ) is pair(pair, pair) __self = self; pair(int, int) __fstself = fst __self; int type = fst __fstself; int length = snd __fstself; pair(int, char[]) __sndself = snd __self; int start = fst __sndself; char[] source = snd __sndself;
+    print length;
+    string kind = call token_type_str(type);
+    print " ";
+    print kind;
+    print " ";
+    int __nop = call printStr(source, start, length);
+    println "";
+return 0 end
+int print_token_val(pair(pair, pair) self ) is pair(pair, pair) __self = self; pair(int, int) __fstself = fst __self; int type = fst __fstself; int length = snd __fstself; pair(int, char[]) __sndself = snd __self; int start = fst __sndself; char[] source = snd __sndself;
+    int __nop = call printStr(source, start, length);
+return 0 end
+char[] alloc_line() is
+char[] r = [
+' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
+' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
+' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
+' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '
+];
+return r
+end
+char[][] alloc_lines(char[] l) is
+char[][] r = [
+l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,
+l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,
+l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,
+l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,
+l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,
+l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,
+l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,
+l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,
+l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,
+l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l
+];
+return r
+end
+int getchar() is
+    int c = -1;
+    read c;
+    return c
+end
+char[][] read_all(char[] end_sentinal, char[] blank_sentinal) is
+    char[][] lines = call alloc_lines(blank_sentinal);
+    int linesPos = 0;
+    int linePos = 0;
+    bool running = true;
+    bool inStrChr = false;
+    bool inEscape = false;
+    bool inComment = false;
+    while running do
+        int c = call getchar();
+        if c == -1 then
+            running = false
+        else
+            if c == ord '\n' then
+            inComment = false;
+                if inStrChr then
+                    lines[linesPos][linePos] = chr c
+                else
+                    linesPos = linesPos + 1;
+                    linePos = -1
+                fi
+            else
+                if len lines[linesPos] == 0 then
+                    lines[linesPos] = call alloc_line()
+                else skip fi ;
+                lines[linesPos][linePos] = chr c;
+                if (c == ord '\'' || c == ord '\"') && !inEscape && !inComment then
+                    inStrChr = !inStrChr
+                else skip fi ;
+                if inStrChr && c == ord '\\' then
+                    inEscape = !inEscape
+                else
+                    inEscape = false
+                fi ;
+                if c == ord '#' && !inStrChr then
+                    inComment = true
+                else skip fi
+            fi
+        fi ;
+        linePos = linePos + 1
+    done ;
+    lines[linesPos+1] = end_sentinal;
+    return lines
+end
+int printStr(char[] str, int start, int lenn) is
+    int i = 0;
+    while (i < lenn) do
+        print str[start + i];
+        i = i + 1
+    done ;
+return 0 end
+int printStrXml(char[] str, int start, int lenn) is
+    int i = 0;
+    while (i < lenn) do
+        char c = str[start + i];
+             if c == '&' then print "&amp;"
+        else if c == '<' then print "&lt;"
+        else if c == '>' then print "&gt;"
+        else print c
+        fi fi fi;
+        i = i + 1
+    done ;
+return 0 end
+string type_kind_str(int __e) is
+    if __e < 1004 then
+        if __e < 1002 then
+            if __e < 1001 then
+                if __e == 1000 then return "int" else skip fi
+            else
+                if __e == 1001 then return "char" else skip fi
+            fi
+        else
+            if __e < 1003 then
+                if __e == 1002 then return "string" else skip fi
+            else
+                if __e == 1003 then return "bool" else skip fi
+            fi
+        fi
+    else
+        if __e < 1006 then
+            if __e < 1005 then
+                if __e == 1004 then return "pair" else skip fi
+            else
+                if __e == 1005 then return "array" else skip fi
+            fi
+        else
+            if __e < 1007 then
+                if __e == 1006 then return "eraised_pair" else skip fi
+            else
+                if __e == 1007 then return "unknown" else skip fi
+            fi
+        fi
+    fi ; exit 1
+end
+pair(int, pair) type_int() is
+    pair(int, pair) __ret = newpair(1000, null); return __ret
+end
+pair(int, pair) type_char() is
+    pair(int, pair) __ret = newpair(1001, null); return __ret
+end
+pair(int, pair) type_bool() is
+    pair(int, pair) __ret = newpair(1003, null); return __ret
+end
+pair(int, pair) type_string() is
+    pair(int, pair) __ret = newpair(1002, null); return __ret
+end
+pair(int, pair) type_array(pair(int, pair) ty) is
+    pair(int, pair) __ret = newpair(1005, ty); return __ret
+end
+pair(int, pair) type_eraised_pair() is
+    pair(int, pair) __ret = newpair(1006, null); return __ret
+end
+pair(int, pair) type_pair(pair(int, pair) lt, pair(int, pair) rt) is
+    pair(pair, pair) p = newpair(lt, rt);
+    pair(int, pair) __ret = newpair(1004, p); return __ret
+end
+pair(int, pair) type_unknown() is
+    pair(int, pair) __ret = newpair(1007, null); return __ret
+end
+pair(int, pair) type_array_inner(pair(int, pair) ty) is
+    int kind = fst ty;
+    if !(kind == 1005) then int __exit = call wacc_fail("../shw/src/type.wacc.in", 47, "Condition false: ", "kind == TYPE_ARRAY"); exit 1 else skip fi;
+    pair(int, pair) inner = snd ty;
+    return inner
+end
+pair(int, pair) type_pair_fst(pair(int, pair) ty) is
+    int kind = fst ty;
+    if kind == 1006 then
+        pair(int, pair) __ret = call type_unknown(); return __ret
+    else skip fi;
+    if !(kind == 1004) then int __exit = call wacc_fail("../shw/src/type.wacc.in", 57, "Condition false: ", "kind == TYPE_PAIR"); exit 1 else skip fi;
+    pair(pair, pair) tdat = snd ty;
+    pair(int, pair) __ret = fst tdat; return __ret
+end
+pair(int, pair) type_pair_snd(pair(int, pair) ty) is
+    int kind = fst ty;
+    if kind == 1006 then
+        pair(int, pair) __ret = call type_unknown(); return __ret
+    else skip fi;
+    if !(kind == 1004) then int __exit = call wacc_fail("../shw/src/type.wacc.in", 67, "Condition false: ", "kind == TYPE_PAIR"); exit 1 else skip fi;
+    pair(pair, pair) tdat = snd ty;
+    pair(int, pair) __ret = snd tdat; return __ret
+end
+string free_kind_name(pair(int, pair) ty) is
+    int kind = fst ty;
+    if kind == 1004 || kind == 1006 then
+        return "pair"
+    else
+        if kind == 1005 then
+            return "array"
+        else
+            int __exit = call wacc_fail("../shw/src/type.wacc.in", 80, "Error", ""); exit 1
+        fi
+    fi
+end
+string op_kind_str(int __e) is
+    if __e < 2006 then
+        if __e < 2003 then
+            if __e < 2001 then
+                if __e == 2000 then return "mul" else skip fi
+            else
+                if __e < 2002 then
+                    if __e == 2001 then return "div" else skip fi
+                else
+                    if __e == 2002 then return "mod" else skip fi
+                fi
+            fi
+        else
+            if __e < 2004 then
+                if __e == 2003 then return "add" else skip fi
+            else
+                if __e < 2005 then
+                    if __e == 2004 then return "sub" else skip fi
+                else
+                    if __e == 2005 then return "lt" else skip fi
+                fi
+            fi
+        fi
+    else
+        if __e < 2009 then
+            if __e < 2007 then
+                if __e == 2006 then return "gt" else skip fi
+            else
+                if __e < 2008 then
+                    if __e == 2007 then return "le" else skip fi
+                else
+                    if __e == 2008 then return "ge" else skip fi
+                fi
+            fi
+        else
+            if __e < 2011 then
+                if __e < 2010 then
+                    if __e == 2009 then return "eq" else skip fi
+                else
+                    if __e == 2010 then return "ne" else skip fi
+                fi
+            else
+                if __e < 2012 then
+                    if __e == 2011 then return "and" else skip fi
+                else
+                    if __e == 2012 then return "or" else skip fi
+                fi
+            fi
+        fi
+    fi ; exit 1
+end
+pair(pair, pair) codegen_x64_ctor(
+    int n_locs_,
+    int jno_,
+    int npush_,
+    pair(pair, pair) cur_func_,
+    pair(pair, pair)[] strs_,
+    int n_strs_
+) is
+    int ll__ctor = jno_;
+    pair(pair, pair) rl__ctor = cur_func_;
+    pair(int, pair) l__ctor = newpair(ll__ctor, rl__ctor);
+    int llr__ctor = n_strs_;
+    pair(pair, pair)[] rlr__ctor = strs_;
+    pair(int, pair(pair, pair)[]) lr__ctor = newpair(llr__ctor, rlr__ctor);
+    int lrr__ctor = n_locs_;
+    int rrr__ctor = npush_;
+    pair(int, int) rr__ctor = newpair(lrr__ctor, rrr__ctor);
+    pair(pair, pair) r__ctor = newpair(lr__ctor, rr__ctor);
+    pair(pair, pair) __ctor = newpair(l__ctor, r__ctor);
+    return __ctor
+end
+int codegen_x64_dtor(pair(pair, pair) self) is
+    pair(int, pair) lself = fst self;
+    pair(pair, pair) rself = snd self;
+    int llself = fst lself;
+    pair(pair, pair) rlself = snd lself;
+    free lself;
+    pair(int, pair(pair, pair)[]) lrself = fst rself;
+    pair(int, int) rrself = snd rself;
+    int llrself = fst lrself;
+    pair(pair, pair)[] rlrself = snd lrself;
+    free lrself;
+    int lrrself = fst rrself;
+    int rrrself = snd rrself;
+    free rrself;
+    free rself;
+    free self;
+return 0 end
+int token_start(pair(pair, pair) self ) is pair(pair, pair) __self = self; pair(int, int) __fstself = fst __self; int type = fst __fstself; int length = snd __fstself; pair(int, char[]) __sndself = snd __self; int start = fst __sndself; char[] source = snd __sndself;
+    return start
+end
+int token_type(pair(pair, pair) self ) is pair(pair, pair) __self = self; pair(int, int) __fstself = fst __self; int type = fst __fstself; int length = snd __fstself; pair(int, char[]) __sndself = snd __self; int start = fst __sndself; char[] source = snd __sndself;
+    return type
+end
+int token_length(pair(pair, pair) self ) is pair(pair, pair) __self = self; pair(int, int) __fstself = fst __self; int type = fst __fstself; int length = snd __fstself; pair(int, char[]) __sndself = snd __self; int start = fst __sndself; char[] source = snd __sndself;
+    return length
+end
+char[] token_source(pair(pair, pair) self ) is pair(pair, pair) __self = self; pair(int, int) __fstself = fst __self; int type = fst __fstself; int length = snd __fstself; pair(int, char[]) __sndself = snd __self; int start = fst __sndself; char[] source = snd __sndself;
+    return source
+end
+bool token_name_eq(pair(pair, pair) self , pair(pair, pair) other) is pair(pair, pair) __self = self; pair(int, int) __fstself = fst __self; int type = fst __fstself; int length = snd __fstself; pair(int, char[]) __sndself = snd __self; int start = fst __sndself; char[] source = snd __sndself;
+    int other_lenght = call token_length(other);
+    if other_lenght == length then
+        int other_start = call token_start(other);
+        char[] other_source = call token_source(other);
+        int i=0;
+        while i < length do
+            if source[start+i] != other_source[other_start+i] then
+                return false
+            else
+                i=i+1
+            fi
+        done;
+        return true
+    else
+        return false
+    fi
+end
+int token_number(pair(pair, pair) self ) is pair(pair, pair) __self = self; pair(int, int) __fstself = fst __self; int type = fst __fstself; int length = snd __fstself; pair(int, char[]) __sndself = snd __self; int start = fst __sndself; char[] source = snd __sndself;
+    if !(type == 1) then int __exit = call wacc_fail("../shw/src/token.wacc.in", 37, "Condition false: ", "type == TOKEN_NUMBER"); exit 1 else skip fi;
+    int i = 0;
+    int res = 0;
+    while i < length do
+        char c = source[start+i];
+        res = (res*10) - (ord c - 48);
+        i=i+1
+    done;
+    return res
+end
+bool token_eq_4(pair(pair, pair) self , char c1, char c2, char c3, char c4) is pair(pair, pair) __self = self; pair(int, int) __fstself = fst __self; int type = fst __fstself; int length = snd __fstself; pair(int, char[]) __sndself = snd __self; int start = fst __sndself; char[] source = snd __sndself;
+    if length != 4 then
+        return false
+    else
+        return source[start] == c1 && source[start+1] == c2 && source[start+2] == c3 && source[start+3] == c4
+    fi
+end
+string print_kind_str(int __e) is
+    if __e < 3003 then
+        if __e < 3001 then
+            if __e == 3000 then return "i32" else skip fi
+        else
+            if __e < 3002 then
+                if __e == 3001 then return "char" else skip fi
+            else
+                if __e == 3002 then return "str" else skip fi
+            fi
+        fi
+    else
+        if __e < 3004 then
+            if __e == 3003 then return "char_array" else skip fi
+        else
+            if __e < 3005 then
+                if __e == 3004 then return "bool" else skip fi
+            else
+                if __e == 3005 then return "ptr" else skip fi
+            fi
+        fi
+    fi ; exit 1
+end
+int print_kind(pair(int, pair) ty) is
+    int kind = fst ty;
+    if kind == 1000 then return 3000 else skip fi;
+    if kind == 1001 then return 3001 else skip fi;
+    if kind == 1002 then return 3002 else skip fi;
+    if kind == 1003 then return 3004 else skip fi;
+    if kind == 1004 then return 3005 else skip fi;
+    if kind == 1006 then return 3005 else skip fi;
+    if !(kind==1005) then int __exit = call wacc_fail("../shw/src/print_kind.wacc.in", 32, "Condition false: ", "kind==TYPE_ARRAY"); exit 1 else skip fi;
+    pair(int, pair) ty_elem = snd ty;
+    int kind_elem = fst ty_elem;
+    if kind_elem == 1001 then
+        return 3003
+    else
+        return 3005
+    fi
+end
+int addr_of(int locno) is
+    if !(locno < 258) then int __exit = call wacc_fail("../shw/src/codegen_x64.wacc.in", 50, "Condition false: ", "locno < MAX_LOCS"); exit 1 else skip fi;
+    return 8 * (locno+1)
+end
+string rnames(int rno) is
+    if rno==0 then return "rdi" else
+    if rno==1 then return "rsi" else
+    if rno==2 then return "rdx" else
+    if rno==3 then return "rcx" else
+    if rno==4 then return "r8" else
+    if rno==5 then return "r9" else
+    if rno==6 then return "r10" else
+    if rno==7 then return "r11" else
+    int __exit = call wacc_fail("../shw/src/codegen_x64.wacc.in", 66, "Error", ""); exit 1 fi fi fi fi fi fi fi fi
+end
+pair(pair, pair) codegen_new() is
+    pair(pair, pair) n=null;
+    pair(pair, pair)[] strs = [
+n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,
+n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,
+n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,
+n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,
+n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,
+n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,
+n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,
+n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,
+n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,
+n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n
+    ];
+    if !(len strs == 1000) then int __exit = call wacc_fail("../shw/src/codegen_x64.wacc.in", 84, "Condition false: ", "len strs == MAX_STRINGS"); exit 1 else skip fi;
+    pair(pair, pair) r = call codegen_x64_ctor(
+                        0,
+                        0,
+                        0,
+                        null,
+                        strs,
+                        0
+    );
+    return r
+end
+int cg_start_unit(pair(pair, pair) self ) is pair(pair, pair) __self = self; pair(int, pair) __fstself = fst __self; int jno_ = fst __fstself; pair(pair, pair) cur_func_ = snd __fstself; pair(pair, pair) __sndself = snd __self; pair(int, pair(pair, pair)[]) __fstsndself = fst __sndself; int n_strs_ = fst __fstsndself; pair(pair, pair)[] strs_ = snd __fstsndself; pair(int, int) __sndsndself = snd __sndself; int n_locs_ = fst __sndsndself; int npush_ = snd __sndsndself;
+    println(".intel_syntax noprefix");
+    println(".section  .note.GNU-stack, \"\", @progbits");
+    println(".section .text");
+    println(".global main");
+return 0 end
+int cg_end_unit(pair(pair, pair) self ) is pair(pair, pair) __self = self; pair(int, pair) __fstself = fst __self; int jno_ = fst __fstself; pair(pair, pair) cur_func_ = snd __fstself; pair(pair, pair) __sndself = snd __self; pair(int, pair(pair, pair)[]) __fstsndself = fst __sndself; int n_strs_ = fst __fstsndself; pair(pair, pair)[] strs_ = snd __fstsndself; pair(int, int) __sndsndself = snd __sndself; int n_locs_ = fst __sndsndself; int npush_ = snd __sndsndself;
+return 0 end
+int cg_start_main(pair(pair, pair) self ) is pair(pair, pair) __self = self; pair(int, pair) __fstself = fst __self; int jno_ = fst __fstself; pair(pair, pair) cur_func_ = snd __fstself; pair(pair, pair) __sndself = snd __self; pair(int, pair(pair, pair)[]) __fstsndself = fst __sndself; int n_strs_ = fst __fstsndself; pair(pair, pair)[] strs_ = snd __fstsndself; pair(int, int) __sndsndself = snd __sndself; int n_locs_ = fst __sndsndself; int npush_ = snd __sndsndself;
+    char[] s = ['m','a','i','n'];
+    pair(pair, pair) main_tok = call token_ctor(
+        0,
+        0,
+        len s,
+        s
+    );
+    int __nop = call cg_start_function(self, main_tok);
+return 0 end
+int cg_end_main(pair(pair, pair) self ) is pair(pair, pair) __self = self; pair(int, pair) __fstself = fst __self; int jno_ = fst __fstself; pair(pair, pair) cur_func_ = snd __fstself; pair(pair, pair) __sndself = snd __self; pair(int, pair(pair, pair)[]) __fstsndself = fst __sndself; int n_strs_ = fst __fstsndself; pair(pair, pair)[] strs_ = snd __fstsndself; pair(int, int) __sndsndself = snd __sndself; int n_locs_ = fst __sndsndself; int npush_ = snd __sndsndself;
+    print("    "); println("xor rax, rax");
+    int __nop = call cg_end_function(self);
+    println(".section .rodata");
+    int i = 0;
+    while i < n_strs_ do
+        print ".str"; print i; println ':';
+        print "    .string ";
+        int __nop = call print_token_val(strs_[i]);
+        println "";
+        i=i+1
+    done;
+return 0 end
+int cg_start_function(pair(pair, pair) self , pair(pair, pair) name) is pair(pair, pair) __self = self; pair(int, pair) __fstself = fst __self; int jno_ = fst __fstself; pair(pair, pair) cur_func_ = snd __fstself; pair(pair, pair) __sndself = snd __self; pair(int, pair(pair, pair)[]) __fstsndself = fst __sndself; int n_strs_ = fst __fstsndself; pair(pair, pair)[] strs_ = snd __fstsndself; pair(int, int) __sndsndself = snd __sndself; int n_locs_ = fst __sndsndself; int npush_ = snd __sndsndself;
+    snd __fstself = name; cur_func_ = name;
+    fst __sndsndself = 0; n_locs_ = 0;
+    if !(npush_ == 0) then int __exit = call wacc_fail("../shw/src/codegen_x64.wacc.in", 138, "Condition false: ", "npush_ == 0"); exit 1 else skip fi;
+    int __nop = call print_token_val(name);
+    println ':';
+    print("    "); println("push rbp");
+    print("    "); println("mov rbp, rsp");
+    print "    sub rsp, ";
+    println(258 * 8);
+return 0 end
+int cg_add_arg(pair(pair, pair) self , int argno) is pair(pair, pair) __self = self; pair(int, pair) __fstself = fst __self; int jno_ = fst __fstself; pair(pair, pair) cur_func_ = snd __fstself; pair(pair, pair) __sndself = snd __self; pair(int, pair(pair, pair)[]) __fstsndself = fst __sndself; int n_strs_ = fst __fstsndself; pair(pair, pair)[] strs_ = snd __fstsndself; pair(int, int) __sndsndself = snd __sndself; int n_locs_ = fst __sndsndself; int npush_ = snd __sndsndself;
+    if !(argno < 8) then int __exit = call wacc_fail("../shw/src/codegen_x64.wacc.in", 150, "Condition false: ", "argno < NREGS"); exit 1 else skip fi;
+    int addr = call addr_of(argno);
+    string reg = call rnames(argno);
+    print "    mov [rbp-";
+    print addr;
+    print "], ";
+    println reg;
+return 0 end
+int cg_start_function_body(pair(pair, pair) self ) is pair(pair, pair) __self = self; pair(int, pair) __fstself = fst __self; int jno_ = fst __fstself; pair(pair, pair) cur_func_ = snd __fstself; pair(pair, pair) __sndself = snd __self; pair(int, pair(pair, pair)[]) __fstsndself = fst __sndself; int n_strs_ = fst __fstsndself; pair(pair, pair)[] strs_ = snd __fstsndself; pair(int, int) __sndsndself = snd __sndself; int n_locs_ = fst __sndsndself; int npush_ = snd __sndsndself;
+return 0 end
+int cg_end_function(pair(pair, pair) self ) is pair(pair, pair) __self = self; pair(int, pair) __fstself = fst __self; int jno_ = fst __fstself; pair(pair, pair) cur_func_ = snd __fstself; pair(pair, pair) __sndself = snd __self; pair(int, pair(pair, pair)[]) __fstsndself = fst __sndself; int n_strs_ = fst __fstsndself; pair(pair, pair)[] strs_ = snd __fstsndself; pair(int, int) __sndsndself = snd __sndself; int n_locs_ = fst __sndsndself; int npush_ = snd __sndsndself;
+    print ".ret_";
+    int __nop = call print_token_val(cur_func_);
+    println ':';
+    print "    add rsp, ";
+    println 258 * 8;
+    if !(npush_==0) then int __exit = call wacc_fail("../shw/src/codegen_x64.wacc.in", 169, "Condition false: ", "npush_==0"); exit 1 else skip fi;
+    print("    "); println("pop rbp");
+    print("    "); println("ret");
+return 0 end
+int cg_pop_free(pair(pair, pair) self , pair(int, pair) ty) is pair(pair, pair) __self = self; pair(int, pair) __fstself = fst __self; int jno_ = fst __fstself; pair(pair, pair) cur_func_ = snd __fstself; pair(pair, pair) __sndself = snd __self; pair(int, pair(pair, pair)[]) __fstsndself = fst __sndself; int n_strs_ = fst __fstsndself; pair(pair, pair)[] strs_ = snd __fstsndself; pair(int, int) __sndsndself = snd __sndself; int n_locs_ = fst __sndsndself; int npush_ = snd __sndsndself;
+    print "    pop "; println("rdi"); snd __sndsndself = npush_-1; npush_ = npush_-1;
+    string fk = call free_kind_name(ty);
+    begin if (npush_/2*2 != npush_) then print("    "); println("sub rsp, 8") else skip fi; print "    call ";
+        print "waccrt_";
+        print fk;
+        print "_delete";
+    println ""; if (npush_/2*2 != npush_) then print("    "); println("add rsp, 8") else skip fi end;
+return 0 end
+int cg_pop_return(pair(pair, pair) self ) is pair(pair, pair) __self = self; pair(int, pair) __fstself = fst __self; int jno_ = fst __fstself; pair(pair, pair) cur_func_ = snd __fstself; pair(pair, pair) __sndself = snd __self; pair(int, pair(pair, pair)[]) __fstsndself = fst __sndself; int n_strs_ = fst __fstsndself; pair(pair, pair)[] strs_ = snd __fstsndself; pair(int, int) __sndsndself = snd __sndself; int n_locs_ = fst __sndsndself; int npush_ = snd __sndsndself;
+    print "    pop "; println("rax"); snd __sndsndself = npush_-1; npush_ = npush_-1;
+    print "    jmp .ret_";
+    int __nop = call print_token_val(cur_func_);
+    println "";
+return 0 end
+int cg_pop_exit(pair(pair, pair) self ) is pair(pair, pair) __self = self; pair(int, pair) __fstself = fst __self; int jno_ = fst __fstself; pair(pair, pair) cur_func_ = snd __fstself; pair(pair, pair) __sndself = snd __self; pair(int, pair(pair, pair)[]) __fstsndself = fst __sndself; int n_strs_ = fst __fstsndself; pair(pair, pair)[] strs_ = snd __fstsndself; pair(int, int) __sndsndself = snd __sndself; int n_locs_ = fst __sndsndself; int npush_ = snd __sndsndself;
+    print "    pop "; println("rdi"); snd __sndsndself = npush_-1; npush_ = npush_-1;
+    begin if (npush_/2*2 != npush_) then print("    "); println("sub rsp, 8") else skip fi; print "    call ";
+        print "waccrt_exit";
+    println ""; if (npush_/2*2 != npush_) then print("    "); println("add rsp, 8") else skip fi end;
+return 0 end
+int cg_pop_print(pair(pair, pair) self , pair(int, pair) ty, bool nl) is pair(pair, pair) __self = self; pair(int, pair) __fstself = fst __self; int jno_ = fst __fstself; pair(pair, pair) cur_func_ = snd __fstself; pair(pair, pair) __sndself = snd __self; pair(int, pair(pair, pair)[]) __fstsndself = fst __sndself; int n_strs_ = fst __fstsndself; pair(pair, pair)[] strs_ = snd __fstsndself; pair(int, int) __sndsndself = snd __sndself; int n_locs_ = fst __sndsndself; int npush_ = snd __sndsndself;
+    print "    pop "; println("rdi"); snd __sndsndself = npush_-1; npush_ = npush_-1;
+    begin if (npush_/2*2 != npush_) then print("    "); println("sub rsp, 8") else skip fi; print "    call ";
+        print "waccrt_print";
+        if nl then
+            print "ln_"
+        else
+            print "_"
+        fi;
+        int pk = call print_kind(ty);
+        string pks = call print_kind_str(pk);
+        print pks;
+    println ""; if (npush_/2*2 != npush_) then print("    "); println("add rsp, 8") else skip fi end;
+return 0 end
+int cg_do_read(pair(pair, pair) self , pair(int, pair) ty) is pair(pair, pair) __self = self; pair(int, pair) __fstself = fst __self; int jno_ = fst __fstself; pair(pair, pair) cur_func_ = snd __fstself; pair(pair, pair) __sndself = snd __self; pair(int, pair(pair, pair)[]) __fstsndself = fst __sndself; int n_strs_ = fst __fstsndself; pair(pair, pair)[] strs_ = snd __fstsndself; pair(int, int) __sndsndself = snd __sndself; int n_locs_ = fst __sndsndself; int npush_ = snd __sndsndself;
+    string fname = "";
+    int tk = fst ty;
+    if tk == 1000 then fname = "waccrt_read_int" else
+    if tk == 1001 then fname = "waccrt_read_char" else
+    int __exit = call wacc_fail("../shw/src/codegen_x64.wacc.in", 215, "Error", ""); exit 1 fi fi;
+    print "    pop "; println("rdi"); snd __sndsndself = npush_-1; npush_ = npush_-1;
+    begin if (npush_/2*2 != npush_) then print("    "); println("sub rsp, 8") else skip fi; print "    call ";
+        print fname;
+    println ""; if (npush_/2*2 != npush_) then print("    "); println("add rsp, 8") else skip fi end;
+return 0 end
+int cg_if_cond(pair(pair, pair) self ) is pair(pair, pair) __self = self; pair(int, pair) __fstself = fst __self; int jno_ = fst __fstself; pair(pair, pair) cur_func_ = snd __fstself; pair(pair, pair) __sndself = snd __self; pair(int, pair(pair, pair)[]) __fstsndself = fst __sndself; int n_strs_ = fst __fstsndself; pair(pair, pair)[] strs_ = snd __fstsndself; pair(int, int) __sndsndself = snd __sndself; int n_locs_ = fst __sndsndself; int npush_ = snd __sndsndself;
+return 0 end
+int cg_if_when(pair(pair, pair) self ) is pair(pair, pair) __self = self; pair(int, pair) __fstself = fst __self; int jno_ = fst __fstself; pair(pair, pair) cur_func_ = snd __fstself; pair(pair, pair) __sndself = snd __self; pair(int, pair(pair, pair)[]) __fstsndself = fst __sndself; int n_strs_ = fst __fstsndself; pair(pair, pair)[] strs_ = snd __fstsndself; pair(int, int) __sndsndself = snd __sndself; int n_locs_ = fst __sndsndself; int npush_ = snd __sndsndself;
+    int j = jno_;
+    fst __fstself = jno_+1; jno_ = jno_+1;
+    print "    pop "; println("rax"); snd __sndsndself = npush_-1; npush_ = npush_-1;
+    print("    "); println("test rax, rax");
+    print "    je .CF";
+    println j;
+    return j
+end
+int cg_if_else(pair(pair, pair) self , int rno) is pair(pair, pair) __self = self; pair(int, pair) __fstself = fst __self; int jno_ = fst __fstself; pair(pair, pair) cur_func_ = snd __fstself; pair(pair, pair) __sndself = snd __self; pair(int, pair(pair, pair)[]) __fstsndself = fst __sndself; int n_strs_ = fst __fstsndself; pair(pair, pair)[] strs_ = snd __fstsndself; pair(int, int) __sndsndself = snd __sndself; int n_locs_ = fst __sndsndself; int npush_ = snd __sndsndself;
+    int j = jno_;
+    fst __fstself = jno_+1; jno_ = jno_+1;
+    print "    jmp .CF";
+    println j;
+    print ".CF";
+    print rno;
+    println ':';
+    return j
+end
+int cg_if_end(pair(pair, pair) self , int n) is pair(pair, pair) __self = self; pair(int, pair) __fstself = fst __self; int jno_ = fst __fstself; pair(pair, pair) cur_func_ = snd __fstself; pair(pair, pair) __sndself = snd __self; pair(int, pair(pair, pair)[]) __fstsndself = fst __sndself; int n_strs_ = fst __fstsndself; pair(pair, pair)[] strs_ = snd __fstsndself; pair(int, int) __sndsndself = snd __sndself; int n_locs_ = fst __sndsndself; int npush_ = snd __sndsndself;
+    print ".CF";
+    print n;
+    println ':';
+return 0 end
+int cg_while_cond(pair(pair, pair) self ) is pair(pair, pair) __self = self; pair(int, pair) __fstself = fst __self; int jno_ = fst __fstself; pair(pair, pair) cur_func_ = snd __fstself; pair(pair, pair) __sndself = snd __self; pair(int, pair(pair, pair)[]) __fstsndself = fst __sndself; int n_strs_ = fst __fstsndself; pair(pair, pair)[] strs_ = snd __fstsndself; pair(int, int) __sndsndself = snd __sndself; int n_locs_ = fst __sndsndself; int npush_ = snd __sndsndself;
+    int jcond = jno_;
+    fst __fstself = jno_+1; jno_ = jno_+1;
+    print ".CF";
+    print jcond;
+    println ':';
+    return jcond
+end
+int cg_while_body(pair(pair, pair) self ) is pair(pair, pair) __self = self; pair(int, pair) __fstself = fst __self; int jno_ = fst __fstself; pair(pair, pair) cur_func_ = snd __fstself; pair(pair, pair) __sndself = snd __self; pair(int, pair(pair, pair)[]) __fstsndself = fst __sndself; int n_strs_ = fst __fstsndself; pair(pair, pair)[] strs_ = snd __fstsndself; pair(int, int) __sndsndself = snd __sndself; int n_locs_ = fst __sndsndself; int npush_ = snd __sndsndself;
+    int jcond = jno_;
+    fst __fstself = jno_+1; jno_ = jno_+1;
+    print "    pop "; println("rax"); snd __sndsndself = npush_-1; npush_ = npush_-1;
+    print("    "); println("test rax, rax");
+    print "    je .CF";
+    println jcond;
+    return jcond
+end
+int cg_while_end(pair(pair, pair) self , int jcond, int jbody) is pair(pair, pair) __self = self; pair(int, pair) __fstself = fst __self; int jno_ = fst __fstself; pair(pair, pair) cur_func_ = snd __fstself; pair(pair, pair) __sndself = snd __self; pair(int, pair(pair, pair)[]) __fstsndself = fst __sndself; int n_strs_ = fst __fstsndself; pair(pair, pair)[] strs_ = snd __fstsndself; pair(int, int) __sndsndself = snd __sndself; int n_locs_ = fst __sndsndself; int npush_ = snd __sndsndself;
+    print "    jmp .CF";
+    println jcond;
+    print ".CF";
+    print jbody;
+    println ':';
+return 0 end
+int cg_start_block(pair(pair, pair) self ) is pair(pair, pair) __self = self; pair(int, pair) __fstself = fst __self; int jno_ = fst __fstself; pair(pair, pair) cur_func_ = snd __fstself; pair(pair, pair) __sndself = snd __self; pair(int, pair(pair, pair)[]) __fstsndself = fst __sndself; int n_strs_ = fst __fstsndself; pair(pair, pair)[] strs_ = snd __fstsndself; pair(int, int) __sndsndself = snd __sndself; int n_locs_ = fst __sndsndself; int npush_ = snd __sndsndself;
+return 0 end
+int cg_end_block(pair(pair, pair) self ) is pair(pair, pair) __self = self; pair(int, pair) __fstself = fst __self; int jno_ = fst __fstself; pair(pair, pair) cur_func_ = snd __fstself; pair(pair, pair) __sndself = snd __self; pair(int, pair(pair, pair)[]) __fstsndself = fst __sndself; int n_strs_ = fst __fstsndself; pair(pair, pair)[] strs_ = snd __fstsndself; pair(int, int) __sndsndself = snd __sndself; int n_locs_ = fst __sndsndself; int npush_ = snd __sndsndself;
+return 0 end
+int cg_e_push_number(pair(pair, pair) self , int n) is pair(pair, pair) __self = self; pair(int, pair) __fstself = fst __self; int jno_ = fst __fstself; pair(pair, pair) cur_func_ = snd __fstself; pair(pair, pair) __sndself = snd __self; pair(int, pair(pair, pair)[]) __fstsndself = fst __sndself; int n_strs_ = fst __fstsndself; pair(pair, pair)[] strs_ = snd __fstsndself; pair(int, int) __sndsndself = snd __sndself; int n_locs_ = fst __sndsndself; int npush_ = snd __sndsndself;
+    print "    mov eax, ";
+    if n == -2147483648 then
+        println n
+    else
+        println -n
+    fi;
+    print "    push "; println("rax"); snd __sndsndself = npush_+1; npush_ = npush_+1;
+return 0 end
+int cg_e_push_bool(pair(pair, pair) self , bool b) is pair(pair, pair) __self = self; pair(int, pair) __fstself = fst __self; int jno_ = fst __fstself; pair(pair, pair) cur_func_ = snd __fstself; pair(pair, pair) __sndself = snd __self; pair(int, pair(pair, pair)[]) __fstsndself = fst __sndself; int n_strs_ = fst __fstsndself; pair(pair, pair)[] strs_ = snd __fstsndself; pair(int, int) __sndsndself = snd __sndself; int n_locs_ = fst __sndsndself; int npush_ = snd __sndsndself;
+    if b then
+        print("    "); println("mov rax, 1")
+    else
+        print("    "); println("mov rax, 0")
+    fi;
+    print "    push "; println("rax"); snd __sndsndself = npush_+1; npush_ = npush_+1;
+return 0 end
+int cg_e_push_null(pair(pair, pair) self ) is pair(pair, pair) __self = self; pair(int, pair) __fstself = fst __self; int jno_ = fst __fstself; pair(pair, pair) cur_func_ = snd __fstself; pair(pair, pair) __sndself = snd __self; pair(int, pair(pair, pair)[]) __fstsndself = fst __sndself; int n_strs_ = fst __fstsndself; pair(pair, pair)[] strs_ = snd __fstsndself; pair(int, int) __sndsndself = snd __sndself; int n_locs_ = fst __sndsndself; int npush_ = snd __sndsndself;
+    print("    "); println("xor eax, eax");
+    print "    push "; println("rax"); snd __sndsndself = npush_+1; npush_ = npush_+1;
+return 0 end
+int cg_e_push_newpair(pair(pair, pair) self ) is pair(pair, pair) __self = self; pair(int, pair) __fstself = fst __self; int jno_ = fst __fstself; pair(pair, pair) cur_func_ = snd __fstself; pair(pair, pair) __sndself = snd __self; pair(int, pair(pair, pair)[]) __fstsndself = fst __sndself; int n_strs_ = fst __fstsndself; pair(pair, pair)[] strs_ = snd __fstsndself; pair(int, int) __sndsndself = snd __sndself; int n_locs_ = fst __sndsndself; int npush_ = snd __sndsndself;
+    print "    pop "; println("rsi"); snd __sndsndself = npush_-1; npush_ = npush_-1;
+    print "    pop "; println("rdi"); snd __sndsndself = npush_-1; npush_ = npush_-1;
+    begin if (npush_/2*2 != npush_) then print("    "); println("sub rsp, 8") else skip fi; print "    call ";
+        print("waccrt_pair_new");
+    println ""; if (npush_/2*2 != npush_) then print("    "); println("add rsp, 8") else skip fi end;
+    print "    push "; println("rax"); snd __sndsndself = npush_+1; npush_ = npush_+1;
+return 0 end
+int cg_e_fst(pair(pair, pair) self ) is pair(pair, pair) __self = self; pair(int, pair) __fstself = fst __self; int jno_ = fst __fstself; pair(pair, pair) cur_func_ = snd __fstself; pair(pair, pair) __sndself = snd __self; pair(int, pair(pair, pair)[]) __fstsndself = fst __sndself; int n_strs_ = fst __fstsndself; pair(pair, pair)[] strs_ = snd __fstsndself; pair(int, int) __sndsndself = snd __sndself; int n_locs_ = fst __sndsndself; int npush_ = snd __sndsndself;
+    print "    pop "; println("rax"); snd __sndsndself = npush_-1; npush_ = npush_-1;
+    print("    "); println("mov rdi, [rax]");
+    print "    push "; println("rdi"); snd __sndsndself = npush_+1; npush_ = npush_+1;
+return 0 end
+int cg_e_snd(pair(pair, pair) self ) is pair(pair, pair) __self = self; pair(int, pair) __fstself = fst __self; int jno_ = fst __fstself; pair(pair, pair) cur_func_ = snd __fstself; pair(pair, pair) __sndself = snd __self; pair(int, pair(pair, pair)[]) __fstsndself = fst __sndself; int n_strs_ = fst __fstsndself; pair(pair, pair)[] strs_ = snd __fstsndself; pair(int, int) __sndsndself = snd __sndself; int n_locs_ = fst __sndsndself; int npush_ = snd __sndsndself;
+    print "    pop "; println("rax"); snd __sndsndself = npush_-1; npush_ = npush_-1;
+    print("    "); println("mov rdi, [rax+8]");
+    print "    push "; println("rdi"); snd __sndsndself = npush_+1; npush_ = npush_+1;
+return 0 end
+int cg_e_len(pair(pair, pair) self ) is pair(pair, pair) __self = self; pair(int, pair) __fstself = fst __self; int jno_ = fst __fstself; pair(pair, pair) cur_func_ = snd __fstself; pair(pair, pair) __sndself = snd __self; pair(int, pair(pair, pair)[]) __fstsndself = fst __sndself; int n_strs_ = fst __fstsndself; pair(pair, pair)[] strs_ = snd __fstsndself; pair(int, int) __sndsndself = snd __sndself; int n_locs_ = fst __sndsndself; int npush_ = snd __sndsndself;
+    print "    pop "; println("rax"); snd __sndsndself = npush_-1; npush_ = npush_-1;
+    print("    "); println("mov rdi, [rax-8]");
+    print "    push "; println("rdi"); snd __sndsndself = npush_+1; npush_ = npush_+1;
+return 0 end
+int cg_e_not(pair(pair, pair) self ) is pair(pair, pair) __self = self; pair(int, pair) __fstself = fst __self; int jno_ = fst __fstself; pair(pair, pair) cur_func_ = snd __fstself; pair(pair, pair) __sndself = snd __self; pair(int, pair(pair, pair)[]) __fstsndself = fst __sndself; int n_strs_ = fst __fstsndself; pair(pair, pair)[] strs_ = snd __fstsndself; pair(int, int) __sndsndself = snd __sndself; int n_locs_ = fst __sndsndself; int npush_ = snd __sndsndself;
+    print "    pop "; println("rax"); snd __sndsndself = npush_-1; npush_ = npush_-1;
+    print("    "); println("xor rax, 1");
+    print "    push "; println("rax"); snd __sndsndself = npush_+1; npush_ = npush_+1;
+return 0 end
+int cg_e_neg(pair(pair, pair) self ) is pair(pair, pair) __self = self; pair(int, pair) __fstself = fst __self; int jno_ = fst __fstself; pair(pair, pair) cur_func_ = snd __fstself; pair(pair, pair) __sndself = snd __self; pair(int, pair(pair, pair)[]) __fstsndself = fst __sndself; int n_strs_ = fst __fstsndself; pair(pair, pair)[] strs_ = snd __fstsndself; pair(int, int) __sndsndself = snd __sndself; int n_locs_ = fst __sndsndself; int npush_ = snd __sndsndself;
+    print "    pop "; println("rax"); snd __sndsndself = npush_-1; npush_ = npush_-1;
+    print("    "); println("neg eax");
+    print "    push "; println("rax"); snd __sndsndself = npush_+1; npush_ = npush_+1;
+return 0 end
+int cg_e_array_elem(pair(pair, pair) self ) is pair(pair, pair) __self = self; pair(int, pair) __fstself = fst __self; int jno_ = fst __fstself; pair(pair, pair) cur_func_ = snd __fstself; pair(pair, pair) __sndself = snd __self; pair(int, pair(pair, pair)[]) __fstsndself = fst __sndself; int n_strs_ = fst __fstsndself; pair(pair, pair)[] strs_ = snd __fstsndself; pair(int, int) __sndsndself = snd __sndself; int n_locs_ = fst __sndsndself; int npush_ = snd __sndsndself;
+    print "    pop "; println("rsi"); snd __sndsndself = npush_-1; npush_ = npush_-1;
+    print "    pop "; println("rdi"); snd __sndsndself = npush_-1; npush_ = npush_-1;
+    begin if (npush_/2*2 != npush_) then print("    "); println("sub rsp, 8") else skip fi; print "    call ";
+        print "waccrt_array_get";
+    println ""; if (npush_/2*2 != npush_) then print("    "); println("add rsp, 8") else skip fi end;
+    print "    push "; println("rax"); snd __sndsndself = npush_+1; npush_ = npush_+1;
+return 0 end
+int cg_e_push_array_lit(pair(pair, pair) self , int nels) is pair(pair, pair) __self = self; pair(int, pair) __fstself = fst __self; int jno_ = fst __fstself; pair(pair, pair) cur_func_ = snd __fstself; pair(pair, pair) __sndself = snd __self; pair(int, pair(pair, pair)[]) __fstsndself = fst __sndself; int n_strs_ = fst __fstsndself; pair(pair, pair)[] strs_ = snd __fstsndself; pair(int, int) __sndsndself = snd __sndself; int n_locs_ = fst __sndsndself; int npush_ = snd __sndsndself;
+    print "    mov rdi, " ; println nels;
+    print "    lea rsi, [rsp+"; print (nels-1)*8; println "]";
+    begin if (npush_/2*2 != npush_) then print("    "); println("sub rsp, 8") else skip fi; print "    call ";
+        print "waccrt_array_new";
+    println ""; if (npush_/2*2 != npush_) then print("    "); println("add rsp, 8") else skip fi end;
+    int i=0;
+    while i<nels do
+        print "    pop "; println("rdi"); snd __sndsndself = npush_-1; npush_ = npush_-1;
+        i=i+1
+    done;
+    print "    push "; println("rax"); snd __sndsndself = npush_+1; npush_ = npush_+1;
+return 0 end
+int cg_e_push_string(pair(pair, pair) self , pair(pair, pair) tok) is pair(pair, pair) __self = self; pair(int, pair) __fstself = fst __self; int jno_ = fst __fstself; pair(pair, pair) cur_func_ = snd __fstself; pair(pair, pair) __sndself = snd __self; pair(int, pair(pair, pair)[]) __fstsndself = fst __sndself; int n_strs_ = fst __fstsndself; pair(pair, pair)[] strs_ = snd __fstsndself; pair(int, int) __sndsndself = snd __sndself; int n_locs_ = fst __sndsndself; int npush_ = snd __sndsndself;
+    if !(n_strs_ <= 1000) then int __exit = call wacc_fail("../shw/src/codegen_x64.wacc.in", 361, "Condition false: ", "n_strs_ <= MAX_STRINGS"); exit 1 else skip fi;
+    strs_[n_strs_] = tok;
+    print "    lea rax, .str"; print n_strs_; println "[rip]";
+    print "    push "; println("rax"); snd __sndsndself = npush_+1; npush_ = npush_+1;
+    fst __fstsndself = n_strs_+1; n_strs_ = n_strs_+1;
+return 0 end
+int cg_e_push_char(pair(pair, pair) self , pair(pair, pair) tok) is pair(pair, pair) __self = self; pair(int, pair) __fstself = fst __self; int jno_ = fst __fstself; pair(pair, pair) cur_func_ = snd __fstself; pair(pair, pair) __sndself = snd __self; pair(int, pair(pair, pair)[]) __fstsndself = fst __sndself; int n_strs_ = fst __fstsndself; pair(pair, pair)[] strs_ = snd __fstsndself; pair(int, int) __sndsndself = snd __sndself; int n_locs_ = fst __sndsndself; int npush_ = snd __sndsndself;
+    bool is_null = call token_eq_4(tok, '\'', '\\', '0', '\'');
+    if is_null then
+        print("    "); println("xor eax, eax")
+    else
+        print "    mov rax, ";
+        int __nop = call print_token_val(tok);
+        println ""
+    fi;
+    print "    push "; println("rax"); snd __sndsndself = npush_+1; npush_ = npush_+1;
+return 0 end
+int cg_e_push_local(pair(pair, pair) self , int locno) is pair(pair, pair) __self = self; pair(int, pair) __fstself = fst __self; int jno_ = fst __fstself; pair(pair, pair) cur_func_ = snd __fstself; pair(pair, pair) __sndself = snd __self; pair(int, pair(pair, pair)[]) __fstsndself = fst __sndself; int n_strs_ = fst __fstsndself; pair(pair, pair)[] strs_ = snd __fstsndself; pair(int, int) __sndsndself = snd __sndself; int n_locs_ = fst __sndsndself; int npush_ = snd __sndsndself;
+    int addr = call addr_of(locno);
+    print "    mov rax, [rbp-"; print addr; println "]";
+    print "    push "; println("rax"); snd __sndsndself = npush_+1; npush_ = npush_+1;
+return 0 end
+int cg_e_pop_op(pair(pair, pair) self , int op) is pair(pair, pair) __self = self; pair(int, pair) __fstself = fst __self; int jno_ = fst __fstself; pair(pair, pair) cur_func_ = snd __fstself; pair(pair, pair) __sndself = snd __self; pair(int, pair(pair, pair)[]) __fstsndself = fst __sndself; int n_strs_ = fst __fstsndself; pair(pair, pair)[] strs_ = snd __fstsndself; pair(int, int) __sndsndself = snd __sndself; int n_locs_ = fst __sndsndself; int npush_ = snd __sndsndself;
+    print "    pop "; println("rsi"); snd __sndsndself = npush_-1; npush_ = npush_-1;
+    print "    pop "; println("rdi"); snd __sndsndself = npush_-1; npush_ = npush_-1;
+    if op == 2003 then
+        print("    "); println("lea eax, [rdi+rsi]")
+    else if op == 2011 then
+        print("    "); println("and esi, edi");
+        print("    "); println("movzx eax, sil")
+    else if op == 2001 then
+        print("    "); println("mov eax, edi");
+        print("    "); println("cdq");
+        print("    "); println("idiv esi")
+    else if op == 2009 then
+        print("    "); println("xor eax, eax");
+        print("    "); println("cmp rdi, rsi");
+        print("    "); println("sete al")
+    else if op == 2008 then
+        print("    "); println("xor eax, eax");
+        print("    "); println("cmp edi, esi");
+        print("    "); println("setge al")
+    else if op == 2006 then
+        print("    "); println("xor eax, eax");
+        print("    "); println("cmp edi, esi");
+        print("    "); println("setg al")
+    else if op == 2007 then
+        print("    "); println("xor eax, eax");
+        print("    "); println("cmp edi, esi");
+        print("    "); println("setle al")
+    else if op == 2005 then
+        print("    "); println("xor eax, eax");
+        print("    "); println("cmp edi, esi");
+        print("    "); println("setl al")
+    else if op == 2002 then
+        print("    "); println("mov eax, edi");
+        print("    "); println("cdq");
+        print("    "); println("idiv esi");
+        print("    "); println("mov eax, edx")
+    else if op == 2000 then
+        print("    "); println("mov eax, edi");
+        print("    "); println("imul eax, esi")
+    else if op == 2010 then
+        print("    "); println("xor eax, eax");
+        print("    "); println("cmp rdi, rsi");
+        print("    "); println("setne al")
+    else if op == 2012 then
+        print("    "); println("or esi, edi");
+        print("    "); println("movzx eax, sil")
+    else if op == 2004 then
+        print("    "); println("mov eax, edi");
+        print("    "); println("sub eax, esi")
+    else int __exit = call wacc_fail("../shw/src/codegen_x64.wacc.in", 435, "Error", ""); exit 1 fi fi fi fi fi fi fi fi fi fi fi fi fi;
+    print "    push "; println("rax"); snd __sndsndself = npush_+1; npush_ = npush_+1;
+return 0 end
+int cg_assign_addr_local(pair(pair, pair) self , int offset) is pair(pair, pair) __self = self; pair(int, pair) __fstself = fst __self; int jno_ = fst __fstself; pair(pair, pair) cur_func_ = snd __fstself; pair(pair, pair) __sndself = snd __self; pair(int, pair(pair, pair)[]) __fstsndself = fst __sndself; int n_strs_ = fst __fstsndself; pair(pair, pair)[] strs_ = snd __fstsndself; pair(int, int) __sndsndself = snd __sndself; int n_locs_ = fst __sndsndself; int npush_ = snd __sndsndself;
+    int addr = call addr_of(offset);
+    print "    lea rax, [rbp-"; print addr; println "]";
+    print "    push "; println("rax"); snd __sndsndself = npush_+1; npush_ = npush_+1;
+return 0 end
+int cg_assign_addr_fst(pair(pair, pair) self ) is pair(pair, pair) __self = self; pair(int, pair) __fstself = fst __self; int jno_ = fst __fstself; pair(pair, pair) cur_func_ = snd __fstself; pair(pair, pair) __sndself = snd __self; pair(int, pair(pair, pair)[]) __fstsndself = fst __sndself; int n_strs_ = fst __fstsndself; pair(pair, pair)[] strs_ = snd __fstsndself; pair(int, int) __sndsndself = snd __sndself; int n_locs_ = fst __sndsndself; int npush_ = snd __sndsndself;
+    print "    pop "; println("rax"); snd __sndsndself = npush_-1; npush_ = npush_-1;
+    print("    "); println("mov rbx, [rax]");
+    print "    push "; println("rbx"); snd __sndsndself = npush_+1; npush_ = npush_+1;
+return 0 end
+int cg_assign_addr_snd(pair(pair, pair) self ) is pair(pair, pair) __self = self; pair(int, pair) __fstself = fst __self; int jno_ = fst __fstself; pair(pair, pair) cur_func_ = snd __fstself; pair(pair, pair) __sndself = snd __self; pair(int, pair(pair, pair)[]) __fstsndself = fst __sndself; int n_strs_ = fst __fstsndself; pair(pair, pair)[] strs_ = snd __fstsndself; pair(int, int) __sndsndself = snd __sndself; int n_locs_ = fst __sndsndself; int npush_ = snd __sndsndself;
+    print "    pop "; println("rax"); snd __sndsndself = npush_-1; npush_ = npush_-1;
+    print("    "); println("mov rbx, [rax]");
+    print("    "); println("add rbx, 8");
+    print "    push "; println("rbx"); snd __sndsndself = npush_+1; npush_ = npush_+1;
+return 0 end
+int cg_assign_addr_array(pair(pair, pair) self ) is pair(pair, pair) __self = self; pair(int, pair) __fstself = fst __self; int jno_ = fst __fstself; pair(pair, pair) cur_func_ = snd __fstself; pair(pair, pair) __sndself = snd __self; pair(int, pair(pair, pair)[]) __fstsndself = fst __sndself; int n_strs_ = fst __fstsndself; pair(pair, pair)[] strs_ = snd __fstsndself; pair(int, int) __sndsndself = snd __sndself; int n_locs_ = fst __sndsndself; int npush_ = snd __sndsndself;
+    print "    pop "; println("rbx # array index"); snd __sndsndself = npush_-1; npush_ = npush_-1;
+    print "    pop "; println("rax # array base"); snd __sndsndself = npush_-1; npush_ = npush_-1;
+    print("    "); println("mov rax, [rax]");
+    print("    "); println("lea rcx, [rax+rbx*8]");
+    print "    push "; println("rcx"); snd __sndsndself = npush_+1; npush_ = npush_+1;
+return 0 end
+int cg_assign_do(pair(pair, pair) self ) is pair(pair, pair) __self = self; pair(int, pair) __fstself = fst __self; int jno_ = fst __fstself; pair(pair, pair) cur_func_ = snd __fstself; pair(pair, pair) __sndself = snd __self; pair(int, pair(pair, pair)[]) __fstsndself = fst __sndself; int n_strs_ = fst __fstsndself; pair(pair, pair)[] strs_ = snd __fstsndself; pair(int, int) __sndsndself = snd __sndself; int n_locs_ = fst __sndsndself; int npush_ = snd __sndsndself;
+    print "    pop "; println("rdi # assign_do val"); snd __sndsndself = npush_-1; npush_ = npush_-1;
+    print "    pop "; println("rax # assign_do addr"); snd __sndsndself = npush_-1; npush_ = npush_-1;
+    print("    "); println("mov [rax], rdi");
+return 0 end
+int cg_call_func(pair(pair, pair) self , pair(pair, pair) ident, int nargs) is pair(pair, pair) __self = self; pair(int, pair) __fstself = fst __self; int jno_ = fst __fstself; pair(pair, pair) cur_func_ = snd __fstself; pair(pair, pair) __sndself = snd __self; pair(int, pair(pair, pair)[]) __fstsndself = fst __sndself; int n_strs_ = fst __fstsndself; pair(pair, pair)[] strs_ = snd __fstsndself; pair(int, int) __sndsndself = snd __sndself; int n_locs_ = fst __sndsndself; int npush_ = snd __sndsndself;
+    int i = nargs-1;
+    while i>=0 do
+        string reg = call rnames(i);
+        print "    pop "; println(reg); snd __sndsndself = npush_-1; npush_ = npush_-1;
+        i=i-1
+    done;
+    begin if (npush_/2*2 != npush_) then print("    "); println("sub rsp, 8") else skip fi; print "    call ";
+        int __nop = call print_token_val(ident);
+    println ""; if (npush_/2*2 != npush_) then print("    "); println("add rsp, 8") else skip fi end;
+    print "    push "; println("rax"); snd __sndsndself = npush_+1; npush_ = npush_+1;
+return 0 end
+pair(pair, pair) parser_ctor(
+    pair(pair, pair) current_,
+    int scope_depth_,
+    pair(pair, pair) lexer_,
+    pair(pair, pair) codegen_,
+    pair(int, pair)[] local_type_,
+    pair(pair, pair)[] local_name_,
+    int[] local_depth_,
+    int n_locals_
+) is
+    pair(pair, pair) lll__ctor = current_;
+    pair(pair, pair) rll__ctor = lexer_;
+    pair(pair, pair) ll__ctor = newpair(lll__ctor, rll__ctor);
+    int lrl__ctor = n_locals_;
+    int rrl__ctor = scope_depth_;
+    pair(int, int) rl__ctor = newpair(lrl__ctor, rrl__ctor);
+    pair(pair, pair) l__ctor = newpair(ll__ctor, rl__ctor);
+    int[] llr__ctor = local_depth_;
+    pair(pair, pair)[] rlr__ctor = local_name_;
+    pair(int[], pair(pair, pair)[]) lr__ctor = newpair(llr__ctor, rlr__ctor);
+    pair(int, pair)[] lrr__ctor = local_type_;
+    pair(pair, pair) rrr__ctor = codegen_;
+    pair(pair(int, pair)[], pair) rr__ctor = newpair(lrr__ctor, rrr__ctor);
+    pair(pair, pair) r__ctor = newpair(lr__ctor, rr__ctor);
+    pair(pair, pair) __ctor = newpair(l__ctor, r__ctor);
+    return __ctor
+end
+int parser_dtor(pair(pair, pair) self) is
+    pair(pair, pair) lself = fst self;
+    pair(pair, pair) rself = snd self;
+    pair(pair, pair) llself = fst lself;
+    pair(int, int) rlself = snd lself;
+    pair(pair, pair) lllself = fst llself;
+    pair(pair, pair) rllself = snd llself;
+    free llself;
+    int lrlself = fst rlself;
+    int rrlself = snd rlself;
+    free rlself;
+    free lself;
+    pair(int[], pair(pair, pair)[]) lrself = fst rself;
+    pair(pair(int, pair)[], pair) rrself = snd rself;
+    int[] llrself = fst lrself;
+    pair(pair, pair)[] rlrself = snd lrself;
+    free lrself;
+    pair(int, pair)[] lrrself = fst rrself;
+    pair(pair, pair) rrrself = snd rrself;
+    free rrself;
+    free rself;
+    free self;
+return 0 end
+pair(pair, pair) parser_new(pair(pair, pair) lexer, pair(pair, pair) codegen) is
+    pair(pair, pair) current = call l_next_token(lexer);
+    pair(int, pair)[] local_type=[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,
+null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,
+null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,
+null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null];
+    pair(pair, pair)[] local_name=[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,
+null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,
+null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,
+null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null];
+    int[] local_depth=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+    0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+    if !(len local_type == 258) then int __exit = call wacc_fail("../shw/src/parser.wacc.in", 38, "Condition false: ", "len local_type == MAX_LOCS"); exit 1 else skip fi;
+    if !(len local_name == 258) then int __exit = call wacc_fail("../shw/src/parser.wacc.in", 39, "Condition false: ", "len local_name == MAX_LOCS"); exit 1 else skip fi;
+    if !(len local_depth == 258) then int __exit = call wacc_fail("../shw/src/parser.wacc.in", 40, "Condition false: ", "len local_depth == MAX_LOCS"); exit 1 else skip fi;
+    pair(pair, pair) p = call parser_ctor(
+        current,
+        0,
+        lexer, codegen,
+        local_type, local_name, local_depth,
+        0
+    );
+    return p
+end
+pair(pair, pair) p_expect(pair(pair, pair) self , int kind) is pair(pair, pair) __self = self; pair(pair, pair) __fstself = fst __self; pair(pair, pair) __fstfstself = fst __fstself; pair(pair, pair) current_ = fst __fstfstself; pair(pair, pair) lexer_ = snd __fstfstself; pair(int, int) __sndfstself = snd __fstself; int n_locals_ = fst __sndfstself; int scope_depth_ = snd __sndfstself; pair(pair, pair) __sndself = snd __self; pair(int[], pair(pair, pair)[]) __fstsndself = fst __sndself; int[] local_depth_ = fst __fstsndself; pair(pair, pair)[] local_name_ = snd __fstsndself; pair(pair(int, pair)[], pair) __sndsndself = snd __sndself; pair(int, pair)[] local_type_ = fst __sndsndself; pair(pair, pair) codegen_ = snd __sndsndself;
+    int curty = call token_type(current_);
+    if curty != kind then
+        print "Current = ";
+        int __nop = call print_token (current_);
+        print "Expected = ";
+        string exp = call token_type_str(kind);
+        println exp;
+        int __exit = call wacc_fail("../shw/src/parser.wacc.in", 61, "Error", ""); exit 1
+    else skip fi;
+    pair(pair, pair) t = current_;
+    pair(pair, pair) next = call l_next_token(lexer_);
+    fst __fstfstself = next; current_ = next;
+    return t
+end
+pair(pair, pair) p_match(pair(pair, pair) self , int type) is pair(pair, pair) __self = self; pair(pair, pair) __fstself = fst __self; pair(pair, pair) __fstfstself = fst __fstself; pair(pair, pair) current_ = fst __fstfstself; pair(pair, pair) lexer_ = snd __fstfstself; pair(int, int) __sndfstself = snd __fstself; int n_locals_ = fst __sndfstself; int scope_depth_ = snd __sndfstself; pair(pair, pair) __sndself = snd __self; pair(int[], pair(pair, pair)[]) __fstsndself = fst __sndself; int[] local_depth_ = fst __fstsndself; pair(pair, pair)[] local_name_ = snd __fstsndself; pair(pair(int, pair)[], pair) __sndsndself = snd __sndself; pair(int, pair)[] local_type_ = fst __sndsndself; pair(pair, pair) codegen_ = snd __sndsndself;
+    bool b = call p_peak(self, type);
+    if b then
+        pair(pair, pair) t = current_;
+        pair(pair, pair) next = call l_next_token(lexer_);
+        fst __fstfstself = next; current_ = next;
+        return t
+    else
+        return null
+    fi
+end
+pair(pair, pair) p_match2(pair(pair, pair) self , int t1, int t2) is pair(pair, pair) __self = self; pair(pair, pair) __fstself = fst __self; pair(pair, pair) __fstfstself = fst __fstself; pair(pair, pair) current_ = fst __fstfstself; pair(pair, pair) lexer_ = snd __fstfstself; pair(int, int) __sndfstself = snd __fstself; int n_locals_ = fst __sndfstself; int scope_depth_ = snd __sndfstself; pair(pair, pair) __sndself = snd __self; pair(int[], pair(pair, pair)[]) __fstsndself = fst __sndself; int[] local_depth_ = fst __fstsndself; pair(pair, pair)[] local_name_ = snd __fstsndself; pair(pair(int, pair)[], pair) __sndsndself = snd __sndself; pair(int, pair)[] local_type_ = fst __sndsndself; pair(pair, pair) codegen_ = snd __sndsndself;
+    bool b1 = call p_peak(self, t1);
+    bool b2 = call p_peak(self, t2);
+    if b1||b2 then
+        pair(pair, pair) t = current_;
+        pair(pair, pair) next = call l_next_token(lexer_);
+        fst __fstfstself = next; current_ = next;
+        return t
+    else
+        return null
+    fi
+end
+pair(pair, pair) p_match3(pair(pair, pair) self , int t1, int t2, int t3) is pair(pair, pair) __self = self; pair(pair, pair) __fstself = fst __self; pair(pair, pair) __fstfstself = fst __fstself; pair(pair, pair) current_ = fst __fstfstself; pair(pair, pair) lexer_ = snd __fstfstself; pair(int, int) __sndfstself = snd __fstself; int n_locals_ = fst __sndfstself; int scope_depth_ = snd __sndfstself; pair(pair, pair) __sndself = snd __self; pair(int[], pair(pair, pair)[]) __fstsndself = fst __sndself; int[] local_depth_ = fst __fstsndself; pair(pair, pair)[] local_name_ = snd __fstsndself; pair(pair(int, pair)[], pair) __sndsndself = snd __sndself; pair(int, pair)[] local_type_ = fst __sndsndself; pair(pair, pair) codegen_ = snd __sndsndself;
+    bool b1 = call p_peak(self, t1);
+    bool b2 = call p_peak(self, t2);
+    bool b3 = call p_peak(self, t3);
+    if b1||b2||b3 then
+        pair(pair, pair) t = current_;
+        pair(pair, pair) next = call l_next_token(lexer_);
+        fst __fstfstself = next; current_ = next;
+        return t
+    else
+        return null
+    fi
+end
+pair(pair, pair) p_match4(pair(pair, pair) self , int t1, int t2, int t3, int t4) is pair(pair, pair) __self = self; pair(pair, pair) __fstself = fst __self; pair(pair, pair) __fstfstself = fst __fstself; pair(pair, pair) current_ = fst __fstfstself; pair(pair, pair) lexer_ = snd __fstfstself; pair(int, int) __sndfstself = snd __fstself; int n_locals_ = fst __sndfstself; int scope_depth_ = snd __sndfstself; pair(pair, pair) __sndself = snd __self; pair(int[], pair(pair, pair)[]) __fstsndself = fst __sndself; int[] local_depth_ = fst __fstsndself; pair(pair, pair)[] local_name_ = snd __fstsndself; pair(pair(int, pair)[], pair) __sndsndself = snd __sndself; pair(int, pair)[] local_type_ = fst __sndsndself; pair(pair, pair) codegen_ = snd __sndsndself;
+    bool b1 = call p_peak(self, t1);
+    bool b2 = call p_peak(self, t2);
+    bool b3 = call p_peak(self, t3);
+    bool b4 = call p_peak(self, t4);
+    if b1||b2||b3||b4 then
+        pair(pair, pair) t = current_;
+        pair(pair, pair) next = call l_next_token(lexer_);
+        fst __fstfstself = next; current_ = next;
+        return t
+    else
+        return null
+    fi
+end
+bool p_peak(pair(pair, pair) self , int type) is pair(pair, pair) __self = self; pair(pair, pair) __fstself = fst __self; pair(pair, pair) __fstfstself = fst __fstself; pair(pair, pair) current_ = fst __fstfstself; pair(pair, pair) lexer_ = snd __fstfstself; pair(int, int) __sndfstself = snd __fstself; int n_locals_ = fst __sndfstself; int scope_depth_ = snd __sndfstself; pair(pair, pair) __sndself = snd __self; pair(int[], pair(pair, pair)[]) __fstsndself = fst __sndself; int[] local_depth_ = fst __fstsndself; pair(pair, pair)[] local_name_ = snd __fstsndself; pair(pair(int, pair)[], pair) __sndsndself = snd __sndself; pair(int, pair)[] local_type_ = fst __sndsndself; pair(pair, pair) codegen_ = snd __sndsndself;
+    int curty = call token_type(current_);
+    return curty == type
+end
+int p_unit(pair(pair, pair) self ) is pair(pair, pair) __self = self; pair(pair, pair) __fstself = fst __self; pair(pair, pair) __fstfstself = fst __fstself; pair(pair, pair) current_ = fst __fstfstself; pair(pair, pair) lexer_ = snd __fstfstself; pair(int, int) __sndfstself = snd __fstself; int n_locals_ = fst __sndfstself; int scope_depth_ = snd __sndfstself; pair(pair, pair) __sndself = snd __self; pair(int[], pair(pair, pair)[]) __fstsndself = fst __sndself; int[] local_depth_ = fst __fstsndself; pair(pair, pair)[] local_name_ = snd __fstsndself; pair(pair(int, pair)[], pair) __sndsndself = snd __sndself; pair(int, pair)[] local_type_ = fst __sndsndself; pair(pair, pair) codegen_ = snd __sndsndself;
+    int __nop = 0;
+    __nop = call cg_start_unit(codegen_);
+    pair(pair, pair) tok = call p_expect(self, 3);
+    pair(int, pair) ty = null;
+    bool run=true;
+    while run do
+        ty = call p_ty(self);
+        if ty != null then
+            pair(pair, pair) name = call p_expect(self, 0);
+            tok = call p_match(self,35);
+            if tok!=null then
+                __nop = call p_function(self,name)
+            else
+                __nop = call cg_start_main(codegen_);
+                __nop = call p_scope_begin(self);
+                __nop = call p_s_decl_2(self, ty, name);
+                pair(pair, pair) semi = call p_match(self, 38);
+                if semi!=null then
+                    __nop = call p_stmts(self)
+                else skip fi;
+                __nop = call p_end(self);
+                return 0
+            fi
+        else
+            run=false
+        fi
+    done;
+    __nop = call cg_start_main(codegen_);
+    __nop = call p_scope_begin(self);
+    __nop = call p_stmts(self);
+    __nop = call p_end(self);
+return 0 end
+int p_end(pair(pair, pair) self ) is pair(pair, pair) __self = self; pair(pair, pair) __fstself = fst __self; pair(pair, pair) __fstfstself = fst __fstself; pair(pair, pair) current_ = fst __fstfstself; pair(pair, pair) lexer_ = snd __fstfstself; pair(int, int) __sndfstself = snd __fstself; int n_locals_ = fst __sndfstself; int scope_depth_ = snd __sndfstself; pair(pair, pair) __sndself = snd __self; pair(int[], pair(pair, pair)[]) __fstsndself = fst __sndself; int[] local_depth_ = fst __fstsndself; pair(pair, pair)[] local_name_ = snd __fstsndself; pair(pair(int, pair)[], pair) __sndsndself = snd __sndself; pair(int, pair)[] local_type_ = fst __sndsndself; pair(pair, pair) codegen_ = snd __sndsndself;
+    int __nop = call p_scope_end(self);
+    current_ = fst __fstfstself; lexer_ = snd __fstfstself; n_locals_ = fst __sndfstself; scope_depth_ = snd __sndfstself; local_depth_ = fst __fstsndself; local_name_ = snd __fstsndself; local_type_ = fst __sndsndself; codegen_ = snd __sndsndself;
+    if !(scope_depth_==0) then int __exit = call wacc_fail("../shw/src/parser.wacc.in", 170, "Condition false: ", "scope_depth_==0"); exit 1 else skip fi;
+    if !(n_locals_==0) then int __exit = call wacc_fail("../shw/src/parser.wacc.in", 171, "Condition false: ", "n_locals_==0"); exit 1 else skip fi;
+    __nop = call cg_end_main(codegen_);
+    pair(pair, pair) tok = call p_expect(self, 11);
+    tok = call p_expect(self, 2);
+    __nop = call cg_end_unit(codegen_);
+return 0 end
+int p_function(pair(pair, pair) self , pair(pair, pair) name) is pair(pair, pair) __self = self; pair(pair, pair) __fstself = fst __self; pair(pair, pair) __fstfstself = fst __fstself; pair(pair, pair) current_ = fst __fstfstself; pair(pair, pair) lexer_ = snd __fstfstself; pair(int, int) __sndfstself = snd __fstself; int n_locals_ = fst __sndfstself; int scope_depth_ = snd __sndfstself; pair(pair, pair) __sndself = snd __self; pair(int[], pair(pair, pair)[]) __fstsndself = fst __sndself; int[] local_depth_ = fst __fstsndself; pair(pair, pair)[] local_name_ = snd __fstsndself; pair(pair(int, pair)[], pair) __sndsndself = snd __sndself; pair(int, pair)[] local_type_ = fst __sndsndself; pair(pair, pair) codegen_ = snd __sndsndself;
+    int __nop = 0;
+    __nop = call p_scope_begin(self);
+    __nop = call cg_start_function(codegen_, name);
+    if !(n_locals_ == 0) then int __exit = call wacc_fail("../shw/src/parser.wacc.in", 183, "Condition false: ", "n_locals_ == 0"); exit 1 else skip fi;
+    pair(int, pair) oty = call p_ty(self);
+    if oty!=null then
+        pair(pair, pair) argname = call p_expect(self,0);
+        int offset = call p_add_local(self, argname, oty);
+        __nop = call cg_add_arg(codegen_, offset);
+        pair(pair, pair) b = call p_match(self, 39);
+        while b!=null do
+            oty = call p_ty(self);
+            argname = call p_expect(self,0);
+            offset = call p_add_local(self, argname, oty);
+            __nop = call cg_add_arg(codegen_, offset);
+            b = call p_match(self, 39)
+        done
+    else skip fi;
+    pair(pair, pair) dist = call p_expect(self, 36);
+    dist = call p_expect(self, 19);
+    __nop = call cg_start_function_body(codegen_);
+    __nop = call p_stmts(self);
+    dist = call p_expect(self, 11);
+    current_ = fst __fstfstself; lexer_ = snd __fstfstself; n_locals_ = fst __sndfstself; scope_depth_ = snd __sndfstself; local_depth_ = fst __fstsndself; local_name_ = snd __fstsndself; local_type_ = fst __sndsndself; codegen_ = snd __sndsndself;
+    __nop = call p_scope_end(self);
+    __nop = call cg_end_function(codegen_);
+return 0 end
+int p_stmts(pair(pair, pair) self ) is pair(pair, pair) __self = self; pair(pair, pair) __fstself = fst __self; pair(pair, pair) __fstfstself = fst __fstself; pair(pair, pair) current_ = fst __fstfstself; pair(pair, pair) lexer_ = snd __fstfstself; pair(int, int) __sndfstself = snd __fstself; int n_locals_ = fst __sndfstself; int scope_depth_ = snd __sndfstself; pair(pair, pair) __sndself = snd __self; pair(int[], pair(pair, pair)[]) __fstsndself = fst __sndself; int[] local_depth_ = fst __fstsndself; pair(pair, pair)[] local_name_ = snd __fstsndself; pair(pair(int, pair)[], pair) __sndsndself = snd __sndself; pair(int, pair)[] local_type_ = fst __sndsndself; pair(pair, pair) codegen_ = snd __sndsndself;
+    int __nop = 0;
+    __nop = call p_scope_begin(self);
+    bool run = true;
+    while run do
+        __nop = call p_stmt(self);
+        pair(pair, pair) semi = call p_match(self, 38);
+        run = semi != null
+    done;
+    __nop = call p_scope_end(self);
+return 0 end
+int p_stmt(pair(pair, pair) self ) is pair(pair, pair) __self = self; pair(pair, pair) __fstself = fst __self; pair(pair, pair) __fstfstself = fst __fstself; pair(pair, pair) current_ = fst __fstfstself; pair(pair, pair) lexer_ = snd __fstfstself; pair(int, int) __sndfstself = snd __fstself; int n_locals_ = fst __sndfstself; int scope_depth_ = snd __sndfstself; pair(pair, pair) __sndself = snd __self; pair(int[], pair(pair, pair)[]) __fstsndself = fst __sndself; int[] local_depth_ = fst __fstsndself; pair(pair, pair)[] local_name_ = snd __fstsndself; pair(pair(int, pair)[], pair) __sndsndself = snd __sndself; pair(int, pair)[] local_type_ = fst __sndsndself; pair(pair, pair) codegen_ = snd __sndsndself;
+    pair(int, pair) oty = null;
+    pair(pair, pair) tok = call p_match(self, 29);
+    if tok!=null then return 0 else skip fi;
+    tok = call p_match(self, 27);
+    if tok!=null then int _vc = call p_s_read(self); return 0 else skip fi;
+    tok = call p_match(self, 15);
+    if tok!=null then int _vc = call p_s_free(self); return 0 else skip fi;
+    tok = call p_match(self, 28);
+    if tok!=null then int _vc = call p_s_return(self); return 0 else skip fi;
+    tok = call p_match(self, 12);
+    if tok!=null then int _vc = call p_s_exit(self); return 0 else skip fi;
+    tok = call p_match(self, 25);
+    if tok!=null then int _vc = call p_s_print(self); return 0 else skip fi;
+    tok = call p_match(self, 26);
+    if tok!=null then int _vc = call p_s_println(self); return 0 else skip fi;
+    tok = call p_match(self, 17);
+    if tok!=null then int _vc = call p_s_if(self); return 0 else skip fi;
+    tok = call p_match(self, 34);
+    if tok!=null then int _vc = call p_s_while(self); return 0 else skip fi;
+    tok = call p_match(self, 3);
+    if tok!=null then int _vc = call p_s_block(self); return 0 else skip fi;
+    pair(int, pair) ty = call p_ty(self);
+    if ty!=null then
+        int _vc = call p_s_decl(self, ty); return 0
+    else skip fi;
+    pair(int, pair) d = call p_assign_lhs(self);
+    pair(pair, pair) d2 = call p_expect(self, 37);
+    int d3 = call p_assign_rhs(self);
+    int __nop = call cg_assign_do(codegen_);
+return 0 end
+pair(int, pair) p_ty(pair(pair, pair) self ) is pair(pair, pair) __self = self; pair(pair, pair) __fstself = fst __self; pair(pair, pair) __fstfstself = fst __fstself; pair(pair, pair) current_ = fst __fstfstself; pair(pair, pair) lexer_ = snd __fstfstself; pair(int, int) __sndfstself = snd __fstself; int n_locals_ = fst __sndfstself; int scope_depth_ = snd __sndfstself; pair(pair, pair) __sndself = snd __self; pair(int[], pair(pair, pair)[]) __fstsndself = fst __sndself; int[] local_depth_ = fst __fstsndself; pair(pair, pair)[] local_name_ = snd __fstsndself; pair(pair(int, pair)[], pair) __sndsndself = snd __sndself; pair(int, pair)[] local_type_ = fst __sndsndself; pair(pair, pair) codegen_ = snd __sndsndself;
+    pair(int, pair) t = null;
+    pair(pair, pair) b = null;
+    b = call p_match(self, 18); if b!=null then
+        t = call type_int() else
+    b = call p_match(self, 6); if b!=null then
+        t = call type_char() else
+    b = call p_match(self, 4); if b!=null then
+        t = call type_bool() else
+    b = call p_match(self, 31); if b!=null then
+        t = call type_string() else
+    b = call p_match(self, 24); if b != null then
+        b = call p_match(self, 35); if b!=null then
+            pair(int, pair) lt = call p_ty(self);
+            b = call p_expect(self,39);
+            pair(int, pair) rt = call p_ty(self);
+            b = call p_expect(self,36);
+            t = call type_pair(lt, rt)
+        else
+            t = call type_eraised_pair()
+        fi
+    else return null
+    fi fi fi fi fi;
+    b = call p_match(self, 40);
+    while b!=null do
+        b = call p_expect(self, 41);
+        t = call type_array(t);
+        b = call p_match(self, 40)
+    done;
+    return t
+end
+int p_s_read(pair(pair, pair) self ) is pair(pair, pair) __self = self; pair(pair, pair) __fstself = fst __self; pair(pair, pair) __fstfstself = fst __fstself; pair(pair, pair) current_ = fst __fstfstself; pair(pair, pair) lexer_ = snd __fstfstself; pair(int, int) __sndfstself = snd __fstself; int n_locals_ = fst __sndfstself; int scope_depth_ = snd __sndfstself; pair(pair, pair) __sndself = snd __self; pair(int[], pair(pair, pair)[]) __fstsndself = fst __sndself; int[] local_depth_ = fst __fstsndself; pair(pair, pair)[] local_name_ = snd __fstsndself; pair(pair(int, pair)[], pair) __sndsndself = snd __sndself; pair(int, pair)[] local_type_ = fst __sndsndself; pair(pair, pair) codegen_ = snd __sndsndself;
+    pair(int, pair) ty = call p_assign_lhs(self);
+    int _vc = call cg_do_read(codegen_, ty); return 0
+end
+pair(int, pair) p_assign_lhs(pair(pair, pair) self ) is pair(pair, pair) __self = self; pair(pair, pair) __fstself = fst __self; pair(pair, pair) __fstfstself = fst __fstself; pair(pair, pair) current_ = fst __fstfstself; pair(pair, pair) lexer_ = snd __fstfstself; pair(int, int) __sndfstself = snd __fstself; int n_locals_ = fst __sndfstself; int scope_depth_ = snd __sndfstself; pair(pair, pair) __sndself = snd __self; pair(int[], pair(pair, pair)[]) __fstsndself = fst __sndself; int[] local_depth_ = fst __fstsndself; pair(pair, pair)[] local_name_ = snd __fstsndself; pair(pair(int, pair)[], pair) __sndsndself = snd __sndself; pair(int, pair)[] local_type_ = fst __sndsndself; pair(pair, pair) codegen_ = snd __sndsndself;
+    pair(pair, pair) b = call p_match(self, 0);
+    if b!=null then
+        int offset = call p_get_local_offset(self, b);
+        int __nop = call cg_assign_addr_local(codegen_, offset);
+        pair(int, pair) ty = local_type_[offset];
+        ty = call p_assign_lhs_add_array(self, ty);
+        return ty
+    else skip fi;
+    b=call p_match(self, 16);
+    if b!=null then
+        pair(int, pair) t = call p_assign_lhs(self);
+        int __nop = call cg_assign_addr_fst(codegen_);
+        pair(int, pair) __ret = call type_pair_fst(t); return __ret
+    else skip fi;
+    b=call p_match(self, 30);
+    if b!=null then
+        pair(int, pair) t = call p_assign_lhs(self);
+        int __nop = call cg_assign_addr_snd(codegen_);
+        pair(int, pair) __ret = call type_pair_snd(t); return __ret
+    else skip fi;
+    int __exit = call wacc_fail("../shw/src/parser.wacc.in", 354, "Error", ""); exit 1
+end
+pair(int, pair) p_assign_lhs_add_array(pair(pair, pair) self , pair(int, pair) t) is pair(pair, pair) __self = self; pair(pair, pair) __fstself = fst __self; pair(pair, pair) __fstfstself = fst __fstself; pair(pair, pair) current_ = fst __fstfstself; pair(pair, pair) lexer_ = snd __fstfstself; pair(int, int) __sndfstself = snd __fstself; int n_locals_ = fst __sndfstself; int scope_depth_ = snd __sndfstself; pair(pair, pair) __sndself = snd __self; pair(int[], pair(pair, pair)[]) __fstsndself = fst __sndself; int[] local_depth_ = fst __fstsndself; pair(pair, pair)[] local_name_ = snd __fstsndself; pair(pair(int, pair)[], pair) __sndsndself = snd __sndself; pair(int, pair)[] local_type_ = fst __sndsndself; pair(pair, pair) codegen_ = snd __sndsndself;
+    pair(pair, pair) tk = call p_match(self, 40);
+    if tk!=null then
+        pair(int, pair) tdis = call p_expr(self);
+        int __nop = call cg_assign_addr_array(codegen_);
+        tk = call p_expect(self, 41);
+        t = call type_array_inner(t);
+        t = call p_assign_lhs_add_array(self, t);
+        return t
+    else
+        return t
+    fi
+end
+int p_s_decl(pair(pair, pair) self , pair(int, pair) ty) is pair(pair, pair) __self = self; pair(pair, pair) __fstself = fst __self; pair(pair, pair) __fstfstself = fst __fstself; pair(pair, pair) current_ = fst __fstfstself; pair(pair, pair) lexer_ = snd __fstfstself; pair(int, int) __sndfstself = snd __fstself; int n_locals_ = fst __sndfstself; int scope_depth_ = snd __sndfstself; pair(pair, pair) __sndself = snd __self; pair(int[], pair(pair, pair)[]) __fstsndself = fst __sndself; int[] local_depth_ = fst __fstsndself; pair(pair, pair)[] local_name_ = snd __fstsndself; pair(pair(int, pair)[], pair) __sndsndself = snd __sndself; pair(int, pair)[] local_type_ = fst __sndsndself; pair(pair, pair) codegen_ = snd __sndsndself;
+    pair(pair, pair) ident = call p_expect(self, 0);
+    int _vc = call p_s_decl_2(self, ty, ident); return 0
+end
+int p_s_decl_2(pair(pair, pair) self , pair(int, pair) ty, pair(pair, pair) name) is pair(pair, pair) __self = self; pair(pair, pair) __fstself = fst __self; pair(pair, pair) __fstfstself = fst __fstself; pair(pair, pair) current_ = fst __fstfstself; pair(pair, pair) lexer_ = snd __fstfstself; pair(int, int) __sndfstself = snd __fstself; int n_locals_ = fst __sndfstself; int scope_depth_ = snd __sndfstself; pair(pair, pair) __sndself = snd __self; pair(int[], pair(pair, pair)[]) __fstsndself = fst __sndself; int[] local_depth_ = fst __fstsndself; pair(pair, pair)[] local_name_ = snd __fstsndself; pair(pair(int, pair)[], pair) __sndsndself = snd __sndself; pair(int, pair)[] local_type_ = fst __sndsndself; pair(pair, pair) codegen_ = snd __sndsndself;
+    pair(pair, pair) d = call p_expect(self, 37);
+    int offset = call p_add_local(self, name, ty);
+    int __nop = call cg_assign_addr_local(codegen_, offset);
+    __nop = call p_assign_rhs(self);
+    __nop = call cg_assign_do(codegen_);
+return 0 end
+int p_s_free(pair(pair, pair) self ) is pair(pair, pair) __self = self; pair(pair, pair) __fstself = fst __self; pair(pair, pair) __fstfstself = fst __fstself; pair(pair, pair) current_ = fst __fstfstself; pair(pair, pair) lexer_ = snd __fstfstself; pair(int, int) __sndfstself = snd __fstself; int n_locals_ = fst __sndfstself; int scope_depth_ = snd __sndfstself; pair(pair, pair) __sndself = snd __self; pair(int[], pair(pair, pair)[]) __fstsndself = fst __sndself; int[] local_depth_ = fst __fstsndself; pair(pair, pair)[] local_name_ = snd __fstsndself; pair(pair(int, pair)[], pair) __sndsndself = snd __sndself; pair(int, pair)[] local_type_ = fst __sndsndself; pair(pair, pair) codegen_ = snd __sndsndself;
+    pair(int, pair) ty = call p_expr(self);
+    int __nop = call cg_pop_free(codegen_, ty);
+return 0 end
+int p_s_return(pair(pair, pair) self ) is pair(pair, pair) __self = self; pair(pair, pair) __fstself = fst __self; pair(pair, pair) __fstfstself = fst __fstself; pair(pair, pair) current_ = fst __fstfstself; pair(pair, pair) lexer_ = snd __fstfstself; pair(int, int) __sndfstself = snd __fstself; int n_locals_ = fst __sndfstself; int scope_depth_ = snd __sndfstself; pair(pair, pair) __sndself = snd __self; pair(int[], pair(pair, pair)[]) __fstsndself = fst __sndself; int[] local_depth_ = fst __fstsndself; pair(pair, pair)[] local_name_ = snd __fstsndself; pair(pair(int, pair)[], pair) __sndsndself = snd __sndself; pair(int, pair)[] local_type_ = fst __sndsndself; pair(pair, pair) codegen_ = snd __sndsndself;
+    int __nop = 0;
+    pair(int, pair) d=call p_expr(self);
+    __nop = call cg_pop_return(codegen_);
+return 0 end
+int p_s_exit(pair(pair, pair) self ) is pair(pair, pair) __self = self; pair(pair, pair) __fstself = fst __self; pair(pair, pair) __fstfstself = fst __fstself; pair(pair, pair) current_ = fst __fstfstself; pair(pair, pair) lexer_ = snd __fstfstself; pair(int, int) __sndfstself = snd __fstself; int n_locals_ = fst __sndfstself; int scope_depth_ = snd __sndfstself; pair(pair, pair) __sndself = snd __self; pair(int[], pair(pair, pair)[]) __fstsndself = fst __sndself; int[] local_depth_ = fst __fstsndself; pair(pair, pair)[] local_name_ = snd __fstsndself; pair(pair(int, pair)[], pair) __sndsndself = snd __sndself; pair(int, pair)[] local_type_ = fst __sndsndself; pair(pair, pair) codegen_ = snd __sndsndself;
+    int __nop = 0;
+    pair(int, pair) d=call p_expr(self);
+    __nop = call cg_pop_exit(codegen_);
+return 0 end
+int p_s_print(pair(pair, pair) self ) is pair(pair, pair) __self = self; pair(pair, pair) __fstself = fst __self; pair(pair, pair) __fstfstself = fst __fstself; pair(pair, pair) current_ = fst __fstfstself; pair(pair, pair) lexer_ = snd __fstfstself; pair(int, int) __sndfstself = snd __fstself; int n_locals_ = fst __sndfstself; int scope_depth_ = snd __sndfstself; pair(pair, pair) __sndself = snd __self; pair(int[], pair(pair, pair)[]) __fstsndself = fst __sndself; int[] local_depth_ = fst __fstsndself; pair(pair, pair)[] local_name_ = snd __fstsndself; pair(pair(int, pair)[], pair) __sndsndself = snd __sndself; pair(int, pair)[] local_type_ = fst __sndsndself; pair(pair, pair) codegen_ = snd __sndsndself;
+    pair(int, pair) t = call p_expr(self);
+    int __nop = call cg_pop_print(codegen_, t, false);
+return 0 end
+int p_s_println(pair(pair, pair) self ) is pair(pair, pair) __self = self; pair(pair, pair) __fstself = fst __self; pair(pair, pair) __fstfstself = fst __fstself; pair(pair, pair) current_ = fst __fstfstself; pair(pair, pair) lexer_ = snd __fstfstself; pair(int, int) __sndfstself = snd __fstself; int n_locals_ = fst __sndfstself; int scope_depth_ = snd __sndfstself; pair(pair, pair) __sndself = snd __self; pair(int[], pair(pair, pair)[]) __fstsndself = fst __sndself; int[] local_depth_ = fst __fstsndself; pair(pair, pair)[] local_name_ = snd __fstsndself; pair(pair(int, pair)[], pair) __sndsndself = snd __sndself; pair(int, pair)[] local_type_ = fst __sndsndself; pair(pair, pair) codegen_ = snd __sndsndself;
+    pair(int, pair) t = call p_expr(self);
+    int __nop = call cg_pop_print(codegen_, t, true);
+return 0 end
+int p_s_if(pair(pair, pair) self ) is pair(pair, pair) __self = self; pair(pair, pair) __fstself = fst __self; pair(pair, pair) __fstfstself = fst __fstself; pair(pair, pair) current_ = fst __fstfstself; pair(pair, pair) lexer_ = snd __fstfstself; pair(int, int) __sndfstself = snd __fstself; int n_locals_ = fst __sndfstself; int scope_depth_ = snd __sndfstself; pair(pair, pair) __sndself = snd __self; pair(int[], pair(pair, pair)[]) __fstsndself = fst __sndself; int[] local_depth_ = fst __fstsndself; pair(pair, pair)[] local_name_ = snd __fstsndself; pair(pair(int, pair)[], pair) __sndsndself = snd __sndself; pair(int, pair)[] local_type_ = fst __sndsndself; pair(pair, pair) codegen_ = snd __sndsndself;
+    int __nop = call cg_if_cond(codegen_);
+    pair(int, pair) tydis = call p_expr(self);
+    pair(pair, pair) tkdis = call p_expect(self, 32);
+    int jno = call cg_if_when(codegen_);
+    __nop = call p_stmts(self);
+    tkdis = call p_expect(self, 10);
+    jno = call cg_if_else(codegen_, jno);
+    __nop = call p_stmts(self);
+    tkdis = call p_expect(self, 14);
+    __nop = call cg_if_end(codegen_, jno);
+return 0 end
+int p_s_while(pair(pair, pair) self ) is pair(pair, pair) __self = self; pair(pair, pair) __fstself = fst __self; pair(pair, pair) __fstfstself = fst __fstself; pair(pair, pair) current_ = fst __fstfstself; pair(pair, pair) lexer_ = snd __fstfstself; pair(int, int) __sndfstself = snd __fstself; int n_locals_ = fst __sndfstself; int scope_depth_ = snd __sndfstself; pair(pair, pair) __sndself = snd __self; pair(int[], pair(pair, pair)[]) __fstsndself = fst __sndself; int[] local_depth_ = fst __fstsndself; pair(pair, pair)[] local_name_ = snd __fstsndself; pair(pair(int, pair)[], pair) __sndsndself = snd __sndself; pair(int, pair)[] local_type_ = fst __sndsndself; pair(pair, pair) codegen_ = snd __sndsndself;
+    int j_cond = call cg_while_cond(codegen_);
+    pair(int, pair) d = call p_expr(self);
+    pair(pair, pair) dtok = call p_expect(self, 8);
+    int j_body = call cg_while_body(codegen_);
+    int __nop = call p_stmts(self);
+    dtok = call p_expect(self, 9);
+    __nop = call cg_while_end(codegen_, j_cond, j_body);
+return 0 end
+int p_s_block(pair(pair, pair) self ) is pair(pair, pair) __self = self; pair(pair, pair) __fstself = fst __self; pair(pair, pair) __fstfstself = fst __fstself; pair(pair, pair) current_ = fst __fstfstself; pair(pair, pair) lexer_ = snd __fstfstself; pair(int, int) __sndfstself = snd __fstself; int n_locals_ = fst __sndfstself; int scope_depth_ = snd __sndfstself; pair(pair, pair) __sndself = snd __self; pair(int[], pair(pair, pair)[]) __fstsndself = fst __sndself; int[] local_depth_ = fst __fstsndself; pair(pair, pair)[] local_name_ = snd __fstsndself; pair(pair(int, pair)[], pair) __sndsndself = snd __sndself; pair(int, pair)[] local_type_ = fst __sndsndself; pair(pair, pair) codegen_ = snd __sndsndself;
+    int __nop = call cg_start_block(codegen_);
+    __nop = call p_stmts(self);
+    pair(pair, pair) tdis = call p_expect(self, 11);
+    __nop = call cg_end_block(codegen_);
+return 0 end
+int p_s_assign_local(pair(pair, pair) self , pair(pair, pair) name) is pair(pair, pair) __self = self; pair(pair, pair) __fstself = fst __self; pair(pair, pair) __fstfstself = fst __fstself; pair(pair, pair) current_ = fst __fstfstself; pair(pair, pair) lexer_ = snd __fstfstself; pair(int, int) __sndfstself = snd __fstself; int n_locals_ = fst __sndfstself; int scope_depth_ = snd __sndfstself; pair(pair, pair) __sndself = snd __self; pair(int[], pair(pair, pair)[]) __fstsndself = fst __sndself; int[] local_depth_ = fst __fstsndself; pair(pair, pair)[] local_name_ = snd __fstsndself; pair(pair(int, pair)[], pair) __sndsndself = snd __sndself; pair(int, pair)[] local_type_ = fst __sndsndself; pair(pair, pair) codegen_ = snd __sndsndself;
+    int __nop = 0;
+    int offset = call p_get_local_offset(self, name);
+    __nop = call cg_assign_addr_local(codegen_, offset);
+    pair(pair, pair) b = call p_match(self, 40);
+    while b!=null do
+        pair(int, pair) d = call p_expr(self);
+        __nop = call cg_assign_addr_array(codegen_);
+        b = call p_expect(self, 41);
+        b = call p_match(self, 40)
+    done;
+    b = call p_expect(self, 37);
+    __nop = call p_assign_rhs(self);
+    __nop = call cg_assign_do(codegen_);
+return 0 end
+int p_s_assign_fst(pair(pair, pair) self ) is pair(pair, pair) __self = self; pair(pair, pair) __fstself = fst __self; pair(pair, pair) __fstfstself = fst __fstself; pair(pair, pair) current_ = fst __fstfstself; pair(pair, pair) lexer_ = snd __fstfstself; pair(int, int) __sndfstself = snd __fstself; int n_locals_ = fst __sndfstself; int scope_depth_ = snd __sndfstself; pair(pair, pair) __sndself = snd __self; pair(int[], pair(pair, pair)[]) __fstsndself = fst __sndself; int[] local_depth_ = fst __fstsndself; pair(pair, pair)[] local_name_ = snd __fstsndself; pair(pair(int, pair)[], pair) __sndsndself = snd __sndself; pair(int, pair)[] local_type_ = fst __sndsndself; pair(pair, pair) codegen_ = snd __sndsndself;
+    pair(pair, pair) ident = call p_expect(self, 0);
+    pair(pair, pair) dis = call p_expect(self, 37);
+    int offset = call p_get_local_offset(self, ident);
+    int __nop = call cg_assign_addr_local(codegen_, offset);
+    __nop = call cg_assign_addr_fst(codegen_);
+    __nop = call p_assign_rhs(self);
+    __nop = call cg_assign_do(codegen_);
+return 0 end
+int p_s_assign_snd(pair(pair, pair) self ) is pair(pair, pair) __self = self; pair(pair, pair) __fstself = fst __self; pair(pair, pair) __fstfstself = fst __fstself; pair(pair, pair) current_ = fst __fstfstself; pair(pair, pair) lexer_ = snd __fstfstself; pair(int, int) __sndfstself = snd __fstself; int n_locals_ = fst __sndfstself; int scope_depth_ = snd __sndfstself; pair(pair, pair) __sndself = snd __self; pair(int[], pair(pair, pair)[]) __fstsndself = fst __sndself; int[] local_depth_ = fst __fstsndself; pair(pair, pair)[] local_name_ = snd __fstsndself; pair(pair(int, pair)[], pair) __sndsndself = snd __sndself; pair(int, pair)[] local_type_ = fst __sndsndself; pair(pair, pair) codegen_ = snd __sndsndself;
+    pair(pair, pair) ident = call p_expect(self, 0);
+    pair(pair, pair) dis = call p_expect(self, 37);
+    int offset = call p_get_local_offset(self, ident);
+    int __nop = call cg_assign_addr_local(codegen_, offset);
+    __nop = call cg_assign_addr_snd(codegen_);
+    __nop = call p_assign_rhs(self);
+    __nop = call cg_assign_do(codegen_);
+return 0 end
+pair(int, pair) p_expr(pair(pair, pair) self ) is pair(pair, pair) __self = self; pair(pair, pair) __fstself = fst __self; pair(pair, pair) __fstfstself = fst __fstself; pair(pair, pair) current_ = fst __fstfstself; pair(pair, pair) lexer_ = snd __fstfstself; pair(int, int) __sndfstself = snd __fstself; int n_locals_ = fst __sndfstself; int scope_depth_ = snd __sndfstself; pair(pair, pair) __sndself = snd __self; pair(int[], pair(pair, pair)[]) __fstsndself = fst __sndself; int[] local_depth_ = fst __fstsndself; pair(pair, pair)[] local_name_ = snd __fstsndself; pair(pair(int, pair)[], pair) __sndsndself = snd __sndself; pair(int, pair)[] local_type_ = fst __sndsndself; pair(pair, pair) codegen_ = snd __sndsndself; pair(int, pair) __ret = call p_expr_or(self); return __ret end
+pair(int, pair) p_expr_or(pair(pair, pair) self ) is pair(pair, pair) __self = self; pair(pair, pair) __fstself = fst __self; pair(pair, pair) __fstfstself = fst __fstself; pair(pair, pair) current_ = fst __fstfstself; pair(pair, pair) lexer_ = snd __fstfstself; pair(int, int) __sndfstself = snd __fstself; int n_locals_ = fst __sndfstself; int scope_depth_ = snd __sndfstself; pair(pair, pair) __sndself = snd __self; pair(int[], pair(pair, pair)[]) __fstsndself = fst __sndself; int[] local_depth_ = fst __fstsndself; pair(pair, pair)[] local_name_ = snd __fstsndself; pair(pair(int, pair)[], pair) __sndsndself = snd __sndself; pair(int, pair)[] local_type_ = fst __sndsndself; pair(pair, pair) codegen_ = snd __sndsndself;
+    pair(int, pair) ty = call p_expr_and(self);
+    pair(pair, pair) b = call p_match(self, 55);
+    while b!=null do
+        pair(int, pair) d = call p_expr_and(self);
+        int __nop = call cg_e_pop_op(codegen_, 2012);
+        ty = call type_bool();
+        b = call p_match(self, 55)
+    done;
+    return ty
+end
+pair(int, pair) p_expr_and(pair(pair, pair) self ) is pair(pair, pair) __self = self; pair(pair, pair) __fstself = fst __self; pair(pair, pair) __fstfstself = fst __fstself; pair(pair, pair) current_ = fst __fstfstself; pair(pair, pair) lexer_ = snd __fstfstself; pair(int, int) __sndfstself = snd __fstself; int n_locals_ = fst __sndfstself; int scope_depth_ = snd __sndfstself; pair(pair, pair) __sndself = snd __self; pair(int[], pair(pair, pair)[]) __fstsndself = fst __sndself; int[] local_depth_ = fst __fstsndself; pair(pair, pair)[] local_name_ = snd __fstsndself; pair(pair(int, pair)[], pair) __sndsndself = snd __sndself; pair(int, pair)[] local_type_ = fst __sndsndself; pair(pair, pair) codegen_ = snd __sndsndself;
+    pair(int, pair) ty = call p_expr_eq(self);
+    pair(pair, pair) b = call p_match(self, 54);
+    while b!=null do
+        pair(int, pair) d = call p_expr_eq(self);
+        int __nop = call cg_e_pop_op(codegen_, 2011);
+        ty = call type_bool();
+        b = call p_match(self, 54)
+    done;
+    return ty
+end
+pair(int, pair) p_expr_eq(pair(pair, pair) self ) is pair(pair, pair) __self = self; pair(pair, pair) __fstself = fst __self; pair(pair, pair) __fstfstself = fst __fstself; pair(pair, pair) current_ = fst __fstfstself; pair(pair, pair) lexer_ = snd __fstfstself; pair(int, int) __sndfstself = snd __fstself; int n_locals_ = fst __sndfstself; int scope_depth_ = snd __sndfstself; pair(pair, pair) __sndself = snd __self; pair(int[], pair(pair, pair)[]) __fstsndself = fst __sndself; int[] local_depth_ = fst __fstsndself; pair(pair, pair)[] local_name_ = snd __fstsndself; pair(pair(int, pair)[], pair) __sndsndself = snd __sndself; pair(int, pair)[] local_type_ = fst __sndsndself; pair(pair, pair) codegen_ = snd __sndsndself;
+    pair(int, pair) tp = call p_expr_cmp(self);
+    pair(pair, pair) b = call p_match2(self, 52, 53);
+    while b!=null do
+        pair(int, pair) d = call p_expr_cmp(self);
+        int op = 0;
+        int tt = call token_type(b);
+        if tt==52 then op = 2009 else op=2010 fi;
+        int __nop = call cg_e_pop_op(codegen_, op);
+        tp = call type_bool();
+        b = call p_match2(self, 52, 53)
+    done;
+    return tp
+end
+pair(int, pair) p_expr_cmp(pair(pair, pair) self ) is pair(pair, pair) __self = self; pair(pair, pair) __fstself = fst __self; pair(pair, pair) __fstfstself = fst __fstself; pair(pair, pair) current_ = fst __fstfstself; pair(pair, pair) lexer_ = snd __fstfstself; pair(int, int) __sndfstself = snd __fstself; int n_locals_ = fst __sndfstself; int scope_depth_ = snd __sndfstself; pair(pair, pair) __sndself = snd __self; pair(int[], pair(pair, pair)[]) __fstsndself = fst __sndself; int[] local_depth_ = fst __fstsndself; pair(pair, pair)[] local_name_ = snd __fstsndself; pair(pair(int, pair)[], pair) __sndsndself = snd __sndself; pair(int, pair)[] local_type_ = fst __sndsndself; pair(pair, pair) codegen_ = snd __sndsndself;
+    pair(int, pair) tp = call p_expr_add(self);
+    pair(pair, pair) b = call p_match4(self, 50, 51, 48, 49);
+    while b!=null do
+        pair(int, pair) d = call p_expr_add(self);
+        int tt = call token_type(b);
+        int op = 0;
+             if tt==50 then op=2005
+        else if tt==51 then op=2007
+        else if tt==48 then op=2006
+        else if tt==49 then op=2008 else int __exit = call wacc_fail("../shw/src/parser.wacc.in", 532, "Error", ""); exit 1
+             fi fi fi fi;
+        int __nop = call cg_e_pop_op(codegen_, op);
+        tp = call type_bool();
+        b = call p_match4(self, 50, 51, 48, 49)
+    done;
+    return tp
+end
+pair(int, pair) p_expr_add(pair(pair, pair) self ) is pair(pair, pair) __self = self; pair(pair, pair) __fstself = fst __self; pair(pair, pair) __fstfstself = fst __fstself; pair(pair, pair) current_ = fst __fstfstself; pair(pair, pair) lexer_ = snd __fstfstself; pair(int, int) __sndfstself = snd __fstself; int n_locals_ = fst __sndfstself; int scope_depth_ = snd __sndfstself; pair(pair, pair) __sndself = snd __self; pair(int[], pair(pair, pair)[]) __fstsndself = fst __sndself; int[] local_depth_ = fst __fstsndself; pair(pair, pair)[] local_name_ = snd __fstsndself; pair(pair(int, pair)[], pair) __sndsndself = snd __sndself; pair(int, pair)[] local_type_ = fst __sndsndself; pair(pair, pair) codegen_ = snd __sndsndself;
+    pair(int, pair) tp = call p_expr_mul(self);
+    pair(pair, pair) b = call p_match2(self, 47, 43);
+    while b!=null do
+        pair(int, pair) d = call p_expr_mul(self);
+        int tt = call token_type(b);
+        int op = 0;
+        if tt==47 then op = 2003 else op = 2004 fi;
+        int __nop = call cg_e_pop_op(codegen_, op);
+        tp = call type_int();
+        b = call p_match2(self, 47, 43)
+    done;
+    return tp
+end
+pair(int, pair) p_expr_mul(pair(pair, pair) self ) is pair(pair, pair) __self = self; pair(pair, pair) __fstself = fst __self; pair(pair, pair) __fstfstself = fst __fstself; pair(pair, pair) current_ = fst __fstfstself; pair(pair, pair) lexer_ = snd __fstfstself; pair(int, int) __sndfstself = snd __fstself; int n_locals_ = fst __sndfstself; int scope_depth_ = snd __sndfstself; pair(pair, pair) __sndself = snd __self; pair(int[], pair(pair, pair)[]) __fstsndself = fst __sndself; int[] local_depth_ = fst __fstsndself; pair(pair, pair)[] local_name_ = snd __fstsndself; pair(pair(int, pair)[], pair) __sndsndself = snd __sndself; pair(int, pair)[] local_type_ = fst __sndsndself; pair(pair, pair) codegen_ = snd __sndsndself;
+    pair(int, pair) tp = call p_expr_unary(self);
+    pair(pair, pair) b = call p_match3(self, 44, 45, 46);
+    while b!=null do
+        pair(int, pair) d = call p_expr_unary(self);
+        int tt = call token_type(b);
+        int op = 0;
+             if tt==44 then op=2000
+        else if tt==45 then op=2001
+        else if tt==46 then op=2002
+        else int __exit = call wacc_fail("../shw/src/parser.wacc.in", 564, "Error", ""); exit 1 fi fi fi;
+        int __nop = call cg_e_pop_op(codegen_, op);
+        tp = call type_int();
+        b = call p_match3(self, 44, 45, 46)
+    done;
+    return tp
+end
+pair(int, pair) p_expr_unary(pair(pair, pair) self ) is pair(pair, pair) __self = self; pair(pair, pair) __fstself = fst __self; pair(pair, pair) __fstfstself = fst __fstself; pair(pair, pair) current_ = fst __fstfstself; pair(pair, pair) lexer_ = snd __fstfstself; pair(int, int) __sndfstself = snd __fstself; int n_locals_ = fst __sndfstself; int scope_depth_ = snd __sndfstself; pair(pair, pair) __sndself = snd __self; pair(int[], pair(pair, pair)[]) __fstsndself = fst __sndself; int[] local_depth_ = fst __fstsndself; pair(pair, pair)[] local_name_ = snd __fstsndself; pair(pair(int, pair)[], pair) __sndsndself = snd __sndself; pair(int, pair)[] local_type_ = fst __sndsndself; pair(pair, pair) codegen_ = snd __sndsndself;
+    pair(pair, pair) b = call p_match(self, 20);
+    if b!=null then
+        pair(int, pair) tp = call p_expr_unary(self);
+        int __nop = call cg_e_len(codegen_);
+        pair(int, pair) __ret = call type_int(); return __ret
+    else skip fi;
+    b=call p_match(self,23);
+    if b!=null then
+        pair(int, pair) tp = call p_expr_unary(self);
+        pair(int, pair) __ret = call type_int(); return __ret
+    else skip fi;
+    b=call p_match(self,7);
+    if b!=null then
+        pair(int, pair) tp = call p_expr_unary(self);
+        pair(int, pair) __ret = call type_char(); return __ret
+    else skip fi;
+    b=call p_match(self,42);
+    if b!=null then
+        pair(int, pair) tp = call p_expr_unary(self);
+        int __nop = call cg_e_not(codegen_);
+        pair(int, pair) __ret = call type_bool(); return __ret
+    else skip fi;
+    b=call p_match(self,43);
+    if b!=null then
+        pair(int, pair) tp = call p_expr_unary(self);
+        int __nop = call cg_e_neg(codegen_);
+        pair(int, pair) __ret = call type_int(); return __ret
+    else skip fi;
+    b=call p_match(self,47);
+    if b!=null then
+        pair(int, pair) tp = call p_expr_unary(self);
+        pair(int, pair) __ret = call type_int(); return __ret
+    else skip fi;
+    pair(int, pair) __ret = call p_expr_base(self); return __ret
+end
+pair(int, pair) p_expr_base(pair(pair, pair) self ) is pair(pair, pair) __self = self; pair(pair, pair) __fstself = fst __self; pair(pair, pair) __fstfstself = fst __fstself; pair(pair, pair) current_ = fst __fstfstself; pair(pair, pair) lexer_ = snd __fstfstself; pair(int, int) __sndfstself = snd __fstself; int n_locals_ = fst __sndfstself; int scope_depth_ = snd __sndfstself; pair(pair, pair) __sndself = snd __self; pair(int[], pair(pair, pair)[]) __fstsndself = fst __sndself; int[] local_depth_ = fst __fstsndself; pair(pair, pair)[] local_name_ = snd __fstsndself; pair(pair(int, pair)[], pair) __sndsndself = snd __sndself; pair(int, pair)[] local_type_ = fst __sndsndself; pair(pair, pair) codegen_ = snd __sndsndself;
+    pair(pair, pair) b = call p_match(self, 1);
+    if b!=null then
+        int n = call token_number(b);
+        int __nop = call cg_e_push_number(codegen_, n);
+        pair(int, pair) __ret = call type_int(); return __ret
+    else skip fi;
+    b=call p_match(self,33);
+    if b!=null then
+        int __nop = call cg_e_push_bool(codegen_, true);
+        pair(int, pair) __ret = call type_bool(); return __ret
+    else skip fi;
+    b=call p_match(self,13);
+    if b!=null then
+        int __nop = call cg_e_push_bool(codegen_, false);
+        pair(int, pair) __ret = call type_bool(); return __ret
+    else skip fi;
+    b=call p_match(self,6);
+    if b!=null then
+        int __nop = call cg_e_push_char(codegen_, b);
+        pair(int, pair) __ret = call type_char(); return __ret
+    else skip fi;
+    b=call p_match(self,31);
+    if b!=null then
+        int __nop = call cg_e_push_string(codegen_,b);
+        pair(int, pair) __ret = call type_string(); return __ret
+    else skip fi;
+    b=call p_match(self,0);
+    if b!=null then
+        int offset = call p_get_local_offset(self, b);
+        int __nop = call cg_e_push_local(codegen_, offset);
+        pair(int, pair) ty = local_type_[offset];
+        pair(int, pair) __ret = call p_expr_array_elem(self, ty); return __ret
+    else skip fi;
+    b=call p_match(self,35);
+    if b!=null then
+        pair(int, pair) ty = call p_expr(self);
+        b=call p_expect(self,36);
+        return ty
+    else skip fi;
+    b=call p_match(self,22);
+    if b!=null then
+        int __nop = call cg_e_push_null(codegen_);
+        pair(int, pair) __ret = call type_eraised_pair(); return __ret
+    else skip fi;
+    println "Expecting expression, got";
+    int __nop = call print_token (current_);
+    int __exit = call wacc_fail("../shw/src/parser.wacc.in", 672, "Error", ""); exit 1
+end
+pair(int, pair) p_expr_array_elem(pair(pair, pair) self , pair(int, pair) ty) is pair(pair, pair) __self = self; pair(pair, pair) __fstself = fst __self; pair(pair, pair) __fstfstself = fst __fstself; pair(pair, pair) current_ = fst __fstfstself; pair(pair, pair) lexer_ = snd __fstfstself; pair(int, int) __sndfstself = snd __fstself; int n_locals_ = fst __sndfstself; int scope_depth_ = snd __sndfstself; pair(pair, pair) __sndself = snd __self; pair(int[], pair(pair, pair)[]) __fstsndself = fst __sndself; int[] local_depth_ = fst __fstsndself; pair(pair, pair)[] local_name_ = snd __fstsndself; pair(pair(int, pair)[], pair) __sndsndself = snd __sndself; pair(int, pair)[] local_type_ = fst __sndsndself; pair(pair, pair) codegen_ = snd __sndsndself;
+    pair(pair, pair) b = call p_match(self, 40);
+    while b!=null do
+        pair(int, pair) d = call p_expr(self);
+        int __nop = call cg_e_array_elem(codegen_);
+        b=call p_expect(self,41);
+        ty=call type_array_inner(ty);
+        b = call p_match(self, 40)
+    done;
+    return ty
+end
+int p_assign_rhs(pair(pair, pair) self ) is pair(pair, pair) __self = self; pair(pair, pair) __fstself = fst __self; pair(pair, pair) __fstfstself = fst __fstself; pair(pair, pair) current_ = fst __fstfstself; pair(pair, pair) lexer_ = snd __fstfstself; pair(int, int) __sndfstself = snd __fstself; int n_locals_ = fst __sndfstself; int scope_depth_ = snd __sndfstself; pair(pair, pair) __sndself = snd __self; pair(int[], pair(pair, pair)[]) __fstsndself = fst __sndself; int[] local_depth_ = fst __fstsndself; pair(pair, pair)[] local_name_ = snd __fstsndself; pair(pair(int, pair)[], pair) __sndsndself = snd __sndself; pair(int, pair)[] local_type_ = fst __sndsndself; pair(pair, pair) codegen_ = snd __sndsndself;
+    pair(pair, pair) b = call p_match(self, 5);
+    if b!=null then int _vc = call p_rhs_call(self); return 0 else skip fi;
+    b=call p_match(self, 21);
+    if b!=null then int _vc = call p_rhs_newpair(self); return 0 else skip fi;
+    b=call p_match(self,16);
+    if b!=null then int _vc = call p_rhs_fst(self); return 0 else skip fi;
+    b=call p_match(self,30);
+    if b!=null then int _vc = call p_rhs_snd(self); return 0 else skip fi;
+    b=call p_match(self,40);
+    if b!=null then int _vc = call p_rhs_array_lit(self); return 0 else skip fi;
+    pair(int, pair) dis = call p_expr(self);
+return 0 end
+int p_rhs_call(pair(pair, pair) self ) is pair(pair, pair) __self = self; pair(pair, pair) __fstself = fst __self; pair(pair, pair) __fstfstself = fst __fstself; pair(pair, pair) current_ = fst __fstfstself; pair(pair, pair) lexer_ = snd __fstfstself; pair(int, int) __sndfstself = snd __fstself; int n_locals_ = fst __sndfstself; int scope_depth_ = snd __sndfstself; pair(pair, pair) __sndself = snd __self; pair(int[], pair(pair, pair)[]) __fstsndself = fst __sndself; int[] local_depth_ = fst __fstsndself; pair(pair, pair)[] local_name_ = snd __fstsndself; pair(pair(int, pair)[], pair) __sndsndself = snd __sndself; pair(int, pair)[] local_type_ = fst __sndsndself; pair(pair, pair) codegen_ = snd __sndsndself;
+    pair(pair, pair) ident = call p_expect(self, 0);
+    pair(pair, pair) d = call p_expect(self, 35);
+    int nargs = 0;
+    pair(pair, pair) rp = call p_match(self, 36);
+    if rp == null then
+        bool run = true;
+        while run do
+            pair(int, pair) d = call p_expr(self);
+            nargs=nargs+1;
+            pair(pair, pair) comma = call p_match(self, 39);
+            if comma==null then run=false else skip fi
+        done;
+        rp = call p_expect(self, 36)
+    else skip fi;
+    int __nop = call cg_call_func(codegen_, ident, nargs);
+return 0 end
+int p_rhs_newpair(pair(pair, pair) self ) is pair(pair, pair) __self = self; pair(pair, pair) __fstself = fst __self; pair(pair, pair) __fstfstself = fst __fstself; pair(pair, pair) current_ = fst __fstfstself; pair(pair, pair) lexer_ = snd __fstfstself; pair(int, int) __sndfstself = snd __fstself; int n_locals_ = fst __sndfstself; int scope_depth_ = snd __sndfstself; pair(pair, pair) __sndself = snd __self; pair(int[], pair(pair, pair)[]) __fstsndself = fst __sndself; int[] local_depth_ = fst __fstsndself; pair(pair, pair)[] local_name_ = snd __fstsndself; pair(pair(int, pair)[], pair) __sndsndself = snd __sndself; pair(int, pair)[] local_type_ = fst __sndsndself; pair(pair, pair) codegen_ = snd __sndsndself;
+    pair(pair, pair) dtok = call p_expect(self, 35);
+    pair(int, pair) dty = call p_expr(self);
+    dtok = call p_expect(self, 39);
+    dty = call p_expr(self);
+    dtok = call p_expect(self, 36);
+    int __nop = call cg_e_push_newpair(codegen_);
+return 0 end
+int p_rhs_fst(pair(pair, pair) self ) is pair(pair, pair) __self = self; pair(pair, pair) __fstself = fst __self; pair(pair, pair) __fstfstself = fst __fstself; pair(pair, pair) current_ = fst __fstfstself; pair(pair, pair) lexer_ = snd __fstfstself; pair(int, int) __sndfstself = snd __fstself; int n_locals_ = fst __sndfstself; int scope_depth_ = snd __sndfstself; pair(pair, pair) __sndself = snd __self; pair(int[], pair(pair, pair)[]) __fstsndself = fst __sndself; int[] local_depth_ = fst __fstsndself; pair(pair, pair)[] local_name_ = snd __fstsndself; pair(pair(int, pair)[], pair) __sndsndself = snd __sndself; pair(int, pair)[] local_type_ = fst __sndsndself; pair(pair, pair) codegen_ = snd __sndsndself;
+    int __nop = call p_assign_rhs(self);
+    __nop = call cg_e_fst(codegen_);
+return 0 end
+int p_rhs_snd(pair(pair, pair) self ) is pair(pair, pair) __self = self; pair(pair, pair) __fstself = fst __self; pair(pair, pair) __fstfstself = fst __fstself; pair(pair, pair) current_ = fst __fstfstself; pair(pair, pair) lexer_ = snd __fstfstself; pair(int, int) __sndfstself = snd __fstself; int n_locals_ = fst __sndfstself; int scope_depth_ = snd __sndfstself; pair(pair, pair) __sndself = snd __self; pair(int[], pair(pair, pair)[]) __fstsndself = fst __sndself; int[] local_depth_ = fst __fstsndself; pair(pair, pair)[] local_name_ = snd __fstsndself; pair(pair(int, pair)[], pair) __sndsndself = snd __sndself; pair(int, pair)[] local_type_ = fst __sndsndself; pair(pair, pair) codegen_ = snd __sndsndself;
+    int __nop = call p_assign_rhs(self);
+    __nop = call cg_e_snd(codegen_);
+return 0 end
+int p_rhs_array_lit(pair(pair, pair) self ) is pair(pair, pair) __self = self; pair(pair, pair) __fstself = fst __self; pair(pair, pair) __fstfstself = fst __fstself; pair(pair, pair) current_ = fst __fstfstself; pair(pair, pair) lexer_ = snd __fstfstself; pair(int, int) __sndfstself = snd __fstself; int n_locals_ = fst __sndfstself; int scope_depth_ = snd __sndfstself; pair(pair, pair) __sndself = snd __self; pair(int[], pair(pair, pair)[]) __fstsndself = fst __sndself; int[] local_depth_ = fst __fstsndself; pair(pair, pair)[] local_name_ = snd __fstsndself; pair(pair(int, pair)[], pair) __sndsndself = snd __sndself; pair(int, pair)[] local_type_ = fst __sndsndself; pair(pair, pair) codegen_ = snd __sndsndself;
+    int nels = 0;
+    pair(pair, pair) rsqare = call p_match(self, 41);
+    if rsqare==null then
+        bool run = true;
+        while run do
+            pair(int, pair) d = call p_expr(self);
+            nels=nels+1;
+            pair(pair, pair) comma = call p_match(self, 39);
+            if comma==null then run=false else skip fi
+        done;
+        rsqare = call p_expect(self, 41)
+    else skip fi;
+    int __nop = call cg_e_push_array_lit(codegen_, nels);
+return 0 end
+int p_scope_begin(pair(pair, pair) self ) is pair(pair, pair) __self = self; pair(pair, pair) __fstself = fst __self; pair(pair, pair) __fstfstself = fst __fstself; pair(pair, pair) current_ = fst __fstfstself; pair(pair, pair) lexer_ = snd __fstfstself; pair(int, int) __sndfstself = snd __fstself; int n_locals_ = fst __sndfstself; int scope_depth_ = snd __sndfstself; pair(pair, pair) __sndself = snd __self; pair(int[], pair(pair, pair)[]) __fstsndself = fst __sndself; int[] local_depth_ = fst __fstsndself; pair(pair, pair)[] local_name_ = snd __fstsndself; pair(pair(int, pair)[], pair) __sndsndself = snd __sndself; pair(int, pair)[] local_type_ = fst __sndsndself; pair(pair, pair) codegen_ = snd __sndsndself;
+    snd __sndfstself = scope_depth_ + 1; scope_depth_ = scope_depth_ + 1;
+return 0 end
+int p_scope_end(pair(pair, pair) self ) is pair(pair, pair) __self = self; pair(pair, pair) __fstself = fst __self; pair(pair, pair) __fstfstself = fst __fstself; pair(pair, pair) current_ = fst __fstfstself; pair(pair, pair) lexer_ = snd __fstfstself; pair(int, int) __sndfstself = snd __fstself; int n_locals_ = fst __sndfstself; int scope_depth_ = snd __sndfstself; pair(pair, pair) __sndself = snd __self; pair(int[], pair(pair, pair)[]) __fstsndself = fst __sndself; int[] local_depth_ = fst __fstsndself; pair(pair, pair)[] local_name_ = snd __fstsndself; pair(pair(int, pair)[], pair) __sndsndself = snd __sndself; pair(int, pair)[] local_type_ = fst __sndsndself; pair(pair, pair) codegen_ = snd __sndsndself;
+    snd __sndfstself = scope_depth_ - 1; scope_depth_ = scope_depth_ - 1;
+    if !(scope_depth_ >= 0) then int __exit = call wacc_fail("../shw/src/parser.wacc.in", 771, "Condition false: ", "scope_depth_ >= 0"); exit 1 else skip fi;
+    bool run = true;
+    while run do
+        if n_locals_ == 0 then
+            run = false
+        else
+            int last_depth = local_depth_[n_locals_-1];
+            if last_depth > scope_depth_ then
+                fst __sndfstself = n_locals_ - 1; n_locals_ = n_locals_ - 1
+            else
+                run = false
+            fi
+        fi
+    done;
+return 0 end
+int p_add_local(pair(pair, pair) self , pair(pair, pair) name, pair(int, pair) type) is pair(pair, pair) __self = self; pair(pair, pair) __fstself = fst __self; pair(pair, pair) __fstfstself = fst __fstself; pair(pair, pair) current_ = fst __fstfstself; pair(pair, pair) lexer_ = snd __fstfstself; pair(int, int) __sndfstself = snd __fstself; int n_locals_ = fst __sndfstself; int scope_depth_ = snd __sndfstself; pair(pair, pair) __sndself = snd __self; pair(int[], pair(pair, pair)[]) __fstsndself = fst __sndself; int[] local_depth_ = fst __fstsndself; pair(pair, pair)[] local_name_ = snd __fstsndself; pair(pair(int, pair)[], pair) __sndsndself = snd __sndself; pair(int, pair)[] local_type_ = fst __sndsndself; pair(pair, pair) codegen_ = snd __sndsndself;
+    int offset = n_locals_;
+    local_type_[offset] = type;
+    local_name_[offset] = name;
+    local_depth_[offset] = scope_depth_;
+    fst __sndfstself = n_locals_ + 1; n_locals_ = n_locals_ + 1;
+    return offset
+end
+int p_get_local_offset(pair(pair, pair) self , pair(pair, pair) name) is pair(pair, pair) __self = self; pair(pair, pair) __fstself = fst __self; pair(pair, pair) __fstfstself = fst __fstself; pair(pair, pair) current_ = fst __fstfstself; pair(pair, pair) lexer_ = snd __fstfstself; pair(int, int) __sndfstself = snd __fstself; int n_locals_ = fst __sndfstself; int scope_depth_ = snd __sndfstself; pair(pair, pair) __sndself = snd __self; pair(int[], pair(pair, pair)[]) __fstsndself = fst __sndself; int[] local_depth_ = fst __fstsndself; pair(pair, pair)[] local_name_ = snd __fstsndself; pair(pair(int, pair)[], pair) __sndsndself = snd __sndself; pair(int, pair)[] local_type_ = fst __sndsndself; pair(pair, pair) codegen_ = snd __sndsndself;
+    int i = n_locals_-1;
+    while i>=0 do
+        bool eq = call token_name_eq(local_name_[i], name);
+        if eq then
+            return i
+        else
+            i=i-1
+        fi
+    done;
+    int __exit = call wacc_fail("../shw/src/parser.wacc.in", 810, "Error", ""); exit 1
+end
+int __nop = 0;
+char[] end_of_input = [];
+char[] blank_line = [];
+char[][] input = call read_all(end_of_input, blank_line);
+pair(pair, pair) lexer = call lexer_new(input, end_of_input);
+pair(pair, pair) codegen = call codegen_new();
+pair(pair, pair) parser = call parser_new(lexer, codegen);
+__nop = call p_unit(parser);
+skip end
