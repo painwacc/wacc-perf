@@ -1,9 +1,6 @@
 [submodule "painwacc"]
 	path = painwacc
 	url = git@gitlab.doc.ic.ac.uk:lab2223_spring/WACC_55.git
-[submodule "WACC-to-C"]
-	path = WACC-to-C
-	url = git@github.com:aDotInTheVoid/WACC-to-C.git
 [submodule "pisswaccrs"]
 	path = pisswaccrs
 	url = git@github.com:aDotInTheVoid/pisswaccrs.git
