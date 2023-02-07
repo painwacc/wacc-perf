@@ -4,3 +4,6 @@
 [submodule "pisswaccrs"]
 	path = pisswaccrs
 	url = git@github.com:aDotInTheVoid/pisswaccrs.git
+[submodule "WACC-to-C"]
+	path = WACC-to-C
+	url = https://github.com/RiscInside/WACC-to-C
